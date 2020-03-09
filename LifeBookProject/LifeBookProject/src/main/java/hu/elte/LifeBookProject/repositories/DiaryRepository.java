@@ -1,9 +1,21 @@
 package hu.elte.LifeBookProject.repositories;
 
 import hu.elte.LifeBookProject.entities.Diary;
+import hu.elte.LifeBookProject.enums.Mood;
+import java.sql.Date;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import java.text.DateFormat;
 
 
+@Repository
 public interface DiaryRepository extends CrudRepository<Diary, Long> {
     
+    @Query("SELECT p FROM Diary p WHERE p.date = ?1")
+    List<Diary> getPostsByDate(Date dates);
+    
+    @Query("SELECT p FROM Diary p WHERE p.current_mood = ?1 ORDER BY p.date DESC")
+    List<Diary> getPostsByMood(String mood);
 }

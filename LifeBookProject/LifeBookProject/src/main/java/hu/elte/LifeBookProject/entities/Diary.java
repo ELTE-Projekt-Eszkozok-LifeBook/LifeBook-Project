@@ -3,7 +3,7 @@ package hu.elte.LifeBookProject.entities;
 import hu.elte.LifeBookProject.enums.Mood;
 import org.hibernate.type.ImageType;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,7 +35,7 @@ public class Diary extends BaseEntity{
 
     @Column
     @NotNull
-    private Mood currentMood;
+    private String current_mood;
 
     @Column
     @NotNull
