@@ -15,13 +15,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "board")
+@Table(name = "todo")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 
-public class Board extends BaseEntity{
+public class Todo extends BaseEntity{
 
     @Column
     @NotNull
@@ -37,6 +37,6 @@ public class Board extends BaseEntity{
 
     @Column
     @NotNull
-    private TodoCategory category;
+    private String category;
 
 }
