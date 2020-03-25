@@ -1,7 +1,7 @@
 
 package hu.elte.LifeBookProject.entities;
 
-import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,31 +13,29 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "sport")
+@Table(name = "eating")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class SportActivities extends BaseEntity{
+public class EatingHabit extends BaseEntity{
     
     @Column
     @NotNull
-    private String activityName;
+    private String name;
     
     @Column
     @NotNull
-    private String regularity;
+    private String type;
     
     @Column
     @NotNull
-    private int duration;
+    private boolean isFood;
     
     @Column
     @NotNull
-    private Date startTime;
+    private String frequency;
     
-    //egyesületnél/konditeremben/hivatalos szerv által biztosított helyen végzi-e az illető a tevékenységet vagy sem
     @Column
-    @NotNull
-    private boolean official;
+    private String portion;
 }
