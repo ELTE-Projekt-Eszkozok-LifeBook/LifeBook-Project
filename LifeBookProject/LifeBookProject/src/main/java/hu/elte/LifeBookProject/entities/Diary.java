@@ -35,7 +35,7 @@ public class Diary extends BaseEntity{
 
     @Column
     @NotNull
-    private String current_mood;
+    private String currentMood;
 
     @Column
     @NotNull
