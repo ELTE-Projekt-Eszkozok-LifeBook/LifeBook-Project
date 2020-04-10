@@ -70,7 +70,7 @@ public class DiaryController{
         Optional<Diary> entry = diaryRepository.findById(id);
         if(!entry.isPresent()) return ResponseEntity.notFound().build();
         entry.get().setText(newEntry.getText());
-        entry.get().setCurrent_mood(newEntry.getCurrent_mood());
+        entry.get().setCurrentMood(newEntry.getCurrentMood());
         return ResponseEntity.ok(diaryRepository.save(entry.get()));
     }
 }

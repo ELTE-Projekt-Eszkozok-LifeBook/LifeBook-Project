@@ -16,6 +16,6 @@ public interface DiaryRepository extends CrudRepository<Diary, Long> {
     @Query("SELECT p FROM Diary p WHERE p.date = ?1")
     List<Diary> getPostsByDate(Date dates);
     
-    @Query("SELECT p FROM Diary p WHERE p.current_mood = ?1 ORDER BY p.date DESC")
+    @Query("SELECT p FROM Diary p WHERE p.currentMood = ?1 ORDER BY p.date DESC")
     List<Diary> getPostsByMood(String mood);
 }

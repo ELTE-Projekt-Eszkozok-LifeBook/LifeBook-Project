@@ -1,43 +1,41 @@
+
 package hu.elte.LifeBookProject.entities;
 
-import hu.elte.LifeBookProject.enums.Mood;
-import org.hibernate.type.ImageType;
-
-import java.sql.Date;
-
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+
 @Entity
-@Table(name = "diary")
+@Table(name = "eating")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Diary extends BaseEntity{
-
+public class EatingHabit extends BaseEntity{
+    
     @Column
     @NotNull
-    private String text;
-
-    @Column
-    private ImageType image;
-
-    @Column
-    private String video;
-
+    private String name;
+    
     @Column
     @NotNull
-    private String currentMood;
-
+    private String type;
+    
     @Column
     @NotNull
-    private Date date;
+    private boolean isFood;
+    
+    @Column
+    @NotNull
+    private String frequency;
+    
+    @Column
+    private String portion;
 }
