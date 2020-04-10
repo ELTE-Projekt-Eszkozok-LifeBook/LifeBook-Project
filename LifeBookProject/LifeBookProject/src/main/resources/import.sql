@@ -1,0 +1,1 @@
+INSERT INTO Todo VALUES (1, 'household', TRUE, TRUE, 'vmi');
