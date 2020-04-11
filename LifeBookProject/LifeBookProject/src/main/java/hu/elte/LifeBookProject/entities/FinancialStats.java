@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import  java.sql.Date;
+import java.sql.Date;
 import hu.elte.LifeBookProject.enums.Category;
 
 
@@ -26,12 +26,18 @@ import hu.elte.LifeBookProject.enums.Category;
 public class FinancialStats extends BaseEntity {
 
     @Column
-    @Enumerated(EnumType.STRING)
-    private Category category;
+    @NotNull
+    private String category;
     
     @Column
+    @NotNull
     private Date date;
     
     @Column
+    @NotNull
     private Integer amount;
+    
+    //leírás, megjegyzés
+    @Column
+    private String description;
 }

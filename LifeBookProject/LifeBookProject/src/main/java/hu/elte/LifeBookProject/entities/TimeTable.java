@@ -15,6 +15,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import  java.sql.Date;
+import java.sql.Time;
 
 
 @Entity
@@ -27,17 +28,23 @@ import  java.sql.Date;
 public class TimeTable extends BaseEntity {
 
     @Column
+    @NotNull
     private String event;
     
     @Column
-    @Enumerated(EnumType.STRING)
-    private Frequency frequency;
-    
+    @NotNull
+    private String frequency;
     
     @Column
+    @NotNull
     private Date date;
     
-    //TODO
-    /*@Column
-    private Time time;*/
+    @Column
+    @NotNull
+    private Time time;
+    
+    //megjegyzés
+    @Column
+    private String note;
+    
 }
