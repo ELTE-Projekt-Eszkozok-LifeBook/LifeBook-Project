@@ -71,17 +71,16 @@ public class TodoController {
         return ResponseEntity.ok(todoRepository.save(entry));
     }
 
-
-    //todo: post todo
-
-    /*@PutMapping("/update/{id}")
-    public ResponseEntity<Todo> update(@PathVariable Long id, @RequestBody Todo newEntry){
-        Optional<Todo> entry = todoRepository.findById(id);
-        if(!entry.isPresent()) return ResponseEntity.notFound().build();
-        entry.get().setText(newEntry.getText());
-        entry.get().setCurrent_mood(newEntry.getCurrent_mood());
-        return ResponseEntity.ok(diaryRepository.save(entry.get()));
-    }*/
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Todo> update(@PathVariable Long id, @RequestBody Todo newTodo){
+        Todo todo = todoRepository.findById(id).get();
+        if(todo == null) return ResponseEntity.notFound().build();
+        todo.setTodoText(newTodo.getTodoText());
+        todo.setChecked(newTodo.isChecked());
+        todo.setImportant(newTodo.isImportant());
+        todo.setCategory(newTodo.getCategory());
+        return ResponseEntity.ok(todoRepository.save(todo));
+    }
     
 
 }
