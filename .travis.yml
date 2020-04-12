@@ -1,8 +1,18 @@
 language: java
 jdk: oraclejdk15
+os: linux
 
-install: true
-script: ./mvn clean install
+jobs:
+    build:
+        steps:
+            -name: "Maven dependencies"
+             run: mvn install -DskipTests
+            -name: "Unit tests"
+             run: mvn test
+
+branches:
+    only:
+    - database
 
 cache:
   directories:
