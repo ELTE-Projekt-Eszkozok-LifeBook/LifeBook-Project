@@ -12,10 +12,10 @@ INSERT INTO Eating(name, type, is_food, frequency, portion) VALUES ('Hot chocola
 INSERT INTO Eating(name, type, is_food, frequency, portion) VALUES ('Water', 'cool drink', FALSE, 'DAILY', '1,5 liter');
 INSERT INTO Eating(name, type, is_food, frequency, portion) VALUES ('Coffee', 'hot drink', FALSE, 'DAILY', '1 dl');
 
-INSERT INTO Sports(name, regularity, duration, start_time, is_official) VALUES ('basketball', 'WEEKLY', 3.0, '2015-09-10', TRUE);
-INSERT INTO Sports(name, regularity, duration, start_time, is_official) VALUES ('dancing', 'WEEKLY', 3.0, '2019-11-30', FALSE);
-INSERT INTO Sports(name, regularity, duration, start_time, is_official) VALUES ('running', 'DAILY', 1.5, '2018-01-05', FALSE);
-INSERT INTO Sports(name, regularity, duration, start_time, is_official) VALUES ('skiing', 'YEARLY', 20.0, '2010-03-16', FALSE);
+INSERT INTO Sport(name, regularity, duration, start_time, is_official) VALUES ('basketball', 'WEEKLY', 3.0, '2015-09-10', TRUE);
+INSERT INTO Sport(name, regularity, duration, start_time, is_official) VALUES ('dancing', 'WEEKLY', 3.0, '2019-11-30', FALSE);
+INSERT INTO Sport(name, regularity, duration, start_time, is_official) VALUES ('running', 'DAILY', 1.5, '2018-01-05', FALSE);
+INSERT INTO Sport(name, regularity, duration, start_time, is_official) VALUES ('skiing', 'YEARLY', 20.0, '2010-03-16', FALSE);
 
 INSERT INTO Financialstats(category, date, amount, description) VALUES ('INCOME', '2020-04-10', 15000, 'Bursa Hungarica');
 INSERT INTO Financialstats(category, date, amount, description) VALUES ('INCOME', '2020-04-11', 23400, 'Scholarship');
