@@ -3,6 +3,7 @@ jdk: oraclejdk15
 os: linux
 
 script:
+    - cd LifeBookProject/LifeBookProject
     - echo "Maven dependencies"
     - mvn install -DskipTests
     - echo "Unit tests"
