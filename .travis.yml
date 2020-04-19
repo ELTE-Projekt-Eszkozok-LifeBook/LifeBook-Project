@@ -2,13 +2,11 @@ language: java
 jdk: oraclejdk15
 os: linux
 
-jobs:
-    build:
-        steps:
-            -name: "Maven dependencies"
-             run: mvn install -DskipTests
-            -name: "Unit tests"
-             run: mvn test
+script:
+    - echo "Maven dependencies"
+    - mvn install -DskipTests
+    - echo "Unit tests"
+    - mvn test
 
 branches:
     only:
