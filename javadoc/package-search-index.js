@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"hu.elte.LifeBookProject"},{"l":"hu.elte.LifeBookProject.controllers"},{"l":"hu.elte.LifeBookProject.entities"},{"l":"hu.elte.LifeBookProject.enums"},{"l":"hu.elte.LifeBookProject.repositories"}]
