@@ -9,6 +9,9 @@ script:
     - echo "Unit tests"
     - mvn test
 
+after_success:
+    - push-javadoc-to-gh-pages.sh
+
 branches:
     only:
     - database
