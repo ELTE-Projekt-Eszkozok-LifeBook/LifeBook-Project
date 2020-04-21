@@ -1,6 +1,5 @@
 package hu.elte.LifeBookProject.entities;
 
-import hu.elte.LifeBookProject.enums.Mood;
 import org.hibernate.type.ImageType;
 
 import java.sql.Date;
@@ -21,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Diary extends BaseEntity{
+public class Diary extends BaseEntity {
 
     @Column
     @NotNull

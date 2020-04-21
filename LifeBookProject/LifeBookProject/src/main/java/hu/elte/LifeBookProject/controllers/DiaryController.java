@@ -1,7 +1,6 @@
 package hu.elte.LifeBookProject.controllers;
 
 import hu.elte.LifeBookProject.entities.Diary;
-import hu.elte.LifeBookProject.enums.Mood;
 import hu.elte.LifeBookProject.repositories.DiaryRepository;
 import java.sql.Date;
 
@@ -24,27 +23,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin
 @RestController
 @RequestMapping("diary")
-public class DiaryController{
+public class DiaryController {
     
     @Autowired
     private DiaryRepository diaryRepository;
     
     //összes naplóbejegyzés lekérése
     @GetMapping("")
-    public ResponseEntity<Iterable<Diary>> getAll(){
+    public ResponseEntity<Iterable<Diary>> getAll() {
         return new ResponseEntity(diaryRepository.findAll(), HttpStatus.OK);
     }
     
     //naplóbejegyzések lekérése dátum szerint
     @GetMapping("/date/{date}")
-    public ResponseEntity<Iterable<Diary>> getByDate(@PathVariable Date date){
+    public ResponseEntity<Iterable<Diary>> getByDate(@PathVariable Date date) {
         List<Diary> entries = diaryRepository.getPostsByDate(date);
         return new ResponseEntity(entries, HttpStatus.OK);
     }
     
     //naplóbejegyzések lekérése hangulat alapján
     @GetMapping("/mood/{mood}")
-    public ResponseEntity<Iterable<Diary>> getByMood(@PathVariable String mood){
+    public ResponseEntity<Iterable<Diary>> getByMood(@PathVariable String mood) {
         List<Diary> entries = diaryRepository.getPostsByMood(mood);
         return new ResponseEntity(entries, HttpStatus.OK);
     }
@@ -57,18 +56,22 @@ public class DiaryController{
     
     //naplóbejegyzés törlése id alapján
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Diary> delete(@PathVariable Long id){
+    public ResponseEntity<Diary> delete(@PathVariable Long id) {
         Optional<Diary> entry = diaryRepository.findById(id);
-        if(!entry.isPresent()) return ResponseEntity.notFound().build();
+        if (!entry.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
         diaryRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
     
     //naplóbejegyzés módosítása id alapján
     @PutMapping("/update/{id}")
-    public ResponseEntity<Diary> update(@PathVariable Long id, @RequestBody Diary newEntry){
+    public ResponseEntity<Diary> update(@PathVariable Long id, @RequestBody Diary newEntry) {
         Optional<Diary> entry = diaryRepository.findById(id);
-        if(!entry.isPresent()) return ResponseEntity.notFound().build();
+        if (!entry.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
         entry.get().setText(newEntry.getText());
         entry.get().setCurrentMood(newEntry.getCurrentMood());
         return ResponseEntity.ok(diaryRepository.save(entry.get()));

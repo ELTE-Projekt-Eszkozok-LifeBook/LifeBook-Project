@@ -1,7 +1,6 @@
 
 package hu.elte.LifeBookProject.entities;
 
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -18,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class EatingHabit extends BaseEntity{
+public class EatingHabit extends BaseEntity {
     
     @Column
     @NotNull

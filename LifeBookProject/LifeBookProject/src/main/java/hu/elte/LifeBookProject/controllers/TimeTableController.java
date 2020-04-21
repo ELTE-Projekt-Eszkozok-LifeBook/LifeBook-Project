@@ -5,7 +5,6 @@ import hu.elte.LifeBookProject.entities.TimeTable;
 import hu.elte.LifeBookProject.repositories.TimeTableRepository;
 import java.sql.Date;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +29,13 @@ public class TimeTableController {
     
     //összes esemény lekérése
     @GetMapping("")
-    public ResponseEntity<Iterable<TimeTable>> getAll(){
+    public ResponseEntity<Iterable<TimeTable>> getAll() {
         return new ResponseEntity(timeTableRepo.findAll(), HttpStatus.OK);
     }
     
     //események lekérése dátum szerint
     @GetMapping("/date/{date1}/{date2}")
-    public ResponseEntity<Iterable<TimeTable>> getByDate(@PathVariable Date date1, @PathVariable Date date2){
+    public ResponseEntity<Iterable<TimeTable>> getByDate(@PathVariable Date date1, @PathVariable Date date2) {
         List<TimeTable> events = timeTableRepo.getByDate(date1, date2);
         return new ResponseEntity(events, HttpStatus.OK);
     }
@@ -49,18 +48,22 @@ public class TimeTableController {
     
     //esemény törlése név alapján
     @DeleteMapping("/delete/{name}")
-    public ResponseEntity<TimeTable> delete(@PathVariable String name){
+    public ResponseEntity<TimeTable> delete(@PathVariable String name) {
         TimeTable event = timeTableRepo.getByName(name);
-        if(event == null) return ResponseEntity.notFound().build();
+        if (event == null) {
+            return ResponseEntity.notFound().build();
+        }
         timeTableRepo.deleteById(event.getId());
         return ResponseEntity.ok().build();
     }
     
     //esemény módosítása id alapján
     @PutMapping("/update/{name}")
-    public ResponseEntity<TimeTable> update(@PathVariable String name, @RequestBody TimeTable newEvent){
+    public ResponseEntity<TimeTable> update(@PathVariable String name, @RequestBody TimeTable newEvent) {
         TimeTable event = timeTableRepo.getByName(name);
-        if(event == null) return ResponseEntity.notFound().build();
+        if (event == null) {
+            return ResponseEntity.notFound().build();
+        }
         event.setEvent(newEvent.getEvent());
         event.setFrequency(newEvent.getFrequency());
         event.setDate(newEvent.getDate());

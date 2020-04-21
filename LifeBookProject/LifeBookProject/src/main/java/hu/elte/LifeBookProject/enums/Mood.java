@@ -1,6 +1,6 @@
 package hu.elte.LifeBookProject.enums;
 
-public enum Mood{
+public enum Mood {
     OVERJOYED,
     HAPPY,
     OK,

@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class LifeBookProjectApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LifeBookProjectApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(LifeBookProjectApplication.class, args);
+    }
 }

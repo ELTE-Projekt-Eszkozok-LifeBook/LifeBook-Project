@@ -1,14 +1,9 @@
 package hu.elte.LifeBookProject.entities;
 
-import hu.elte.LifeBookProject.enums.TodoCategory;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-//import com.sun.istack.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,8 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-
-public class Todo extends BaseEntity{
+public class Todo extends BaseEntity {
 
     @Column
     @NotNull

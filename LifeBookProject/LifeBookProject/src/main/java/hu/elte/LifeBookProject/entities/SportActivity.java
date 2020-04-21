@@ -11,14 +11,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Table(name = "sport")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class SportActivity extends BaseEntity{
+public class SportActivity extends BaseEntity {
     
     @Column
     @NotNull

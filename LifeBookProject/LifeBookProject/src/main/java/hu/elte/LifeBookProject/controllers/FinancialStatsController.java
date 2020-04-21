@@ -29,27 +29,27 @@ public class FinancialStatsController {
     
     //összes pénzmozgások lekérése
     @GetMapping("")
-    public ResponseEntity<Iterable<FinancialStats>> getAll(){
+    public ResponseEntity<Iterable<FinancialStats>> getAll() {
         return new ResponseEntity(financialStatRepo.findAll(), HttpStatus.OK);
     }
     
     //pénzmozgások lekérése kategória szerint
     @GetMapping("/category/{category}")
-    public ResponseEntity<Iterable<FinancialStats>> getByCategory(@PathVariable String category){
+    public ResponseEntity<Iterable<FinancialStats>> getByCategory(@PathVariable String category) {
         List<FinancialStats> stats = financialStatRepo.getByCategory(category);
         return new ResponseEntity(stats, HttpStatus.OK);
     }
     
     //pénzmozgások lekérése dátum szerint
     @GetMapping("/date/{date}")
-    public ResponseEntity<Iterable<FinancialStats>> getByDate(@PathVariable Date date){
+    public ResponseEntity<Iterable<FinancialStats>> getByDate(@PathVariable Date date) {
         List<FinancialStats> stats = financialStatRepo.getByDate(date);
         return new ResponseEntity(stats, HttpStatus.OK);
     }
     
     //pénzmozgások lekérése dátum szerint
     @GetMapping("/month/{month}")
-    public ResponseEntity<Iterable<FinancialStats>> getByMonth(@PathVariable Integer month){
+    public ResponseEntity<Iterable<FinancialStats>> getByMonth(@PathVariable Integer month) {
         List<FinancialStats> stats = financialStatRepo.getByMonth(month);
         return new ResponseEntity(stats, HttpStatus.OK);
     }
@@ -62,18 +62,22 @@ public class FinancialStatsController {
     
     //pénzmozgás törlése id alapján
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<FinancialStats> delete(@PathVariable Long id){
+    public ResponseEntity<FinancialStats> delete(@PathVariable Long id) {
         Optional<FinancialStats> entry = financialStatRepo.findById(id);
-        if(!entry.isPresent()) return ResponseEntity.notFound().build();
+        if (!entry.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
         financialStatRepo.deleteById(id);
         return ResponseEntity.ok().build();
     }
     
     //pénzmozgás módosítása id alapján
     @PutMapping("/update/{id}")
-    public ResponseEntity<FinancialStats> update(@PathVariable Long id, @RequestBody FinancialStats newStat){
+    public ResponseEntity<FinancialStats> update(@PathVariable Long id, @RequestBody FinancialStats newStat) {
         Optional<FinancialStats> stat = financialStatRepo.findById(id);
-        if(!stat.isPresent()) return ResponseEntity.notFound().build();
+        if (!stat.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
         stat.get().setDate(newStat.getDate());
         stat.get().setCategory(newStat.getCategory());
         stat.get().setAmount(newStat.getAmount());

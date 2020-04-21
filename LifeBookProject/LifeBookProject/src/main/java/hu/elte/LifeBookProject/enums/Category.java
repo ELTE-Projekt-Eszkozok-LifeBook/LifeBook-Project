@@ -1,6 +1,6 @@
 package hu.elte.LifeBookProject.enums;
 
-public enum Category{
+public enum Category {
     HOUSEHOLD,
     FOOD,
     UTILITIES,
