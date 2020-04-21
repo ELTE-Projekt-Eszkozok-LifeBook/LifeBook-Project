@@ -1,6 +1,5 @@
 #!/bin/bash
 
-if [ "$TRAVIS_REPO_SLUG" == "ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "database" ]; then
 
   echo -e "Publishing javadoc...\n"
 
@@ -20,4 +19,3 @@ if [ "$TRAVIS_REPO_SLUG" == "ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project" ] 
 
   echo -e "Published Javadoc to gh-pages.\n"
   
-fi
