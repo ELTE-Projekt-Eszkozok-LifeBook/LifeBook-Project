@@ -4,7 +4,7 @@ if [ "$TRAVIS_REPO_SLUG" == "ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project" ] 
 
   echo -e "Publishing javadoc...\n"
 
-  cp -R build/docs/javadoc $HOME/javadoc-latest
+  cp -R LifeBookProject/LifeBookProject/target/site/apidocs $HOME/javadoc-latest
 
   cd $HOME
   git config --global user.email "travis@travis-ci.org"
