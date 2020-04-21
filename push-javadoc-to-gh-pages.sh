@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$TRAVIS_REPO_SLUG" == "ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project" ] && [ "$TRAVIS_JDK_VERSION" == "oraclejdk15" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "database" ]; then
+if [ "$TRAVIS_REPO_SLUG" == "ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "database" ]; then
 
   echo -e "Publishing javadoc...\n"
 
