@@ -30,7 +30,7 @@ public class DiaryController {
     
     //összes naplóbejegyzés lekérése
     @GetMapping("")
-    public ResponseEntity<Iterable<Diary>> GetAll() {
+    public ResponseEntity<Iterable<Diary>> getAll() {
         return new ResponseEntity(diaryRepository.findAll(), HttpStatus.OK);
     }
     
