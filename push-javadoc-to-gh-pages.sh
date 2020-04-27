@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$TRAVIS_REPO_SLUG" == "ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "database" ]; then
+if [ "$TRAVIS_REPO_SLUG" == "ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "frontend" ]; then
 
   echo -e "Publishing javadoc...\n"
 

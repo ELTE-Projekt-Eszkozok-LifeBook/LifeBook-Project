@@ -23,7 +23,7 @@ after_success:
 
 branches:
     only:
-    - database
+    - frontend
 
 cache:
   directories:
