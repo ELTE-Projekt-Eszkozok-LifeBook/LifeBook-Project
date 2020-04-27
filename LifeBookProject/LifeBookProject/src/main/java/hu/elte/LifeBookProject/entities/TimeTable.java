@@ -1,42 +1,43 @@
 package hu.elte.LifeBookProject.entities;
 
-import hu.elte.LifeBookProject.enums.TodoCategory;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-//import com.sun.istack.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import  java.sql.Date;
+import java.sql.Time;
+
 
 @Entity
-@Table(name = "board")
+@Table(name = "timetable")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-
-public class Board {
-
-    @Column
-    @NotNull
-    private String todoText;
+public class TimeTable extends BaseEntity {
 
     @Column
     @NotNull
-    private boolean checked;
-
+    private String event;
+    
     @Column
     @NotNull
-    private boolean important;
-
+    private String frequency;
+    
     @Column
     @NotNull
-    private TodoCategory category;
-
+    private Date date;
+    
+    @Column
+    @NotNull
+    private Time time;
+    
+    //megjegyzés
+    @Column
+    private String note;
+    
 }
