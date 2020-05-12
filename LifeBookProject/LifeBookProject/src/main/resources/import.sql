@@ -19,7 +19,7 @@ INSERT INTO Sport(name, regularity, duration, start_time, is_official) VALUES ('
 
 INSERT INTO Financialstats(category, date, amount, description) VALUES ('INCOME', '2020-04-10', 15000, 'Bursa Hungarica');
 INSERT INTO Financialstats(category, date, amount, description) VALUES ('INCOME', '2020-04-11', 23400, 'Scholarship');
-INSERT INTO Financialstats(category, date, amount, description) VALUES ('COST', '2020-04-11', 5000, 'Buying new T-shirt');
+INSERT INTO Financialstats(category, date, amount, description) VALUES ('CLOTHES', '2020-04-11', 5000, 'Buying new T-shirt');
 
 INSERT INTO Timetable(event, frequency, date, time, note) VALUES ('Birthday Party', 'OCCASIONAL', '2020-03-16', '17:00:00', 'Booked 2 rooms in Escape Room; should call Stifler!');
 INSERT INTO Timetable(event, frequency, date, time, note) VALUES ('Hip-hop training', 'WEEKLY', '2020-02-12', '18:00:00', 'Must buy season ticket!');

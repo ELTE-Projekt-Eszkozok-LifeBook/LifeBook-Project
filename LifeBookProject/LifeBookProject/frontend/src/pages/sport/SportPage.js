@@ -3,6 +3,14 @@ import SportElement from './SportElement';
 
 class SportPage extends Component{
 
+  emptyItem = {
+    name: '',
+    regularity: '',
+    duration: '',
+    startTime: '',
+    isOfficial: '',
+  };
+
   constructor(props){
     super(props);
     this.state = {
@@ -25,7 +33,7 @@ class SportPage extends Component{
 
   async postSport(){
     let d = new Date();
-    let sport;
+    let sport = this.emptyItem;
     sport.name = document.getElementById("nameInput").value;
     sport.regularity = document.getElementById("regularity").value;
     sport.duration = document.getElementById("durationInput").value;
@@ -44,6 +52,19 @@ class SportPage extends Component{
     });
   }
 
+  async remove(id) {
+    await fetch(`http://localhost:8080/sport/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then(() => {
+      let updatedSports = [...this.state.sports].filter(i => i.id !== id);
+      this.setState({sports: updatedSports});
+    });
+  }
+
 
   render() {
     const {sports, isLoading} = this.state;
@@ -54,7 +75,8 @@ class SportPage extends Component{
 
     const sportList = sports.map(sport => (
       <SportElement
-          sport = { sport }>
+          sport = { sport }
+          onDeleteTodo = {this.remove}>
       </SportElement>
     ))
 
@@ -70,11 +92,9 @@ class SportPage extends Component{
 
           <label htmlFor="regularity">Regularity</label>
           <select id="regularity" name="regularity">
-            <option value="HOUSEHOLD">Household</option> {/* megcsinálni! */}
-            <option value="SHOPPING">Shopping</option>
-            <option value="SCHOOL">School</option>
-            <option value="UNIVERSITY">University</option>
-            <option value="SOMEDAY_STUFF">Someday stuff</option>
+            {this.regularity.map((value, index) => {
+              return <option value={value} key={index}>{value.toLowerCase()}</option>
+            })}
           </select>
 
           <label htmlFor="duration">Duration</label>

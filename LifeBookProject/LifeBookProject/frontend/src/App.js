@@ -5,6 +5,8 @@ import Menu from './pages/Menu';
 import Diary from './pages/diary/Diary';
 import TodoPage from './pages/todo/TodoPage';
 import SportPage from './pages/sport/SportPage';
+import FinancialPage from './pages/financials/FinancialPage';
+import EatingHabitPage from './pages/eating/EatingHabitPage';
 import './App.css';
 
 
@@ -30,10 +32,10 @@ class App extends Component{
               <SportPage></SportPage>
             </Route>
             <Route path="/financials">
-              <Diary></Diary>
+              <FinancialPage></FinancialPage>
             </Route>
             <Route path="/eating">
-              <Diary></Diary>
+              <EatingHabitPage></EatingHabitPage>
             </Route>
           </Switch>
           

@@ -54,6 +54,19 @@ public class FinancialStatsController {
         return new ResponseEntity(stats, HttpStatus.OK);
     }
     
+    //költségek összegének lekérése
+    @GetMapping("/costs")
+    public ResponseEntity<Iterable<FinancialStats>> getCosts() {
+        Integer costs = financialStatRepo.getCosts();
+        return new ResponseEntity(costs, HttpStatus.OK);
+    }
+    
+    @GetMapping("/costs/{category}")
+    public ResponseEntity<Iterable<FinancialStats>> getCostsByCategory(@PathVariable String category) {
+        Integer costs = financialStatRepo.getCostsByCategory(category);
+        return new ResponseEntity(costs, HttpStatus.OK);
+    }
+    
     //új pénzmozgás felvitele
     @PostMapping("")
     public ResponseEntity<FinancialStats> post(@RequestBody FinancialStats stat) {

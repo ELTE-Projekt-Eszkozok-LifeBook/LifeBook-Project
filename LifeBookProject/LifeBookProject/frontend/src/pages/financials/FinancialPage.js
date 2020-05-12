@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import FinancialElement from './FinancialElement';
+import FinancialCategory from './FinancialCategory';
 
 class FinancialPage extends Component{
+
+  emptyItem = {
+    amount: '',
+    date: '',
+    description: '',
+    category: ''
+  };
 
   constructor(props){
     super(props);
     this.state = {
         isLoading: true,
-        financials: null
+        financialLists: null,
+        costs: 0
     };
     this.categories = [    
         "HOUSEHOLD",
@@ -16,23 +24,41 @@ class FinancialPage extends Component{
         "TAX",
         "LOAN",
         "CLOTHES",
-        "OTHER" ]
+        "OTHER",
+        "INCOME" ]
     this.componentDidMount = this.componentDidMount.bind(this);
     this.postData = this.postData.bind(this);
   }
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:8080/sportactivity');
+    const response = await fetch('http://localhost:8080/financial/costs');
     const body = await response.json();
     console.log(body);
+
     if(body){
-      this.setState({ financials: body, isLoading: false });
+      this.setState({ costs: body, isLoading: false });
+
+      const financialLists = this.categories.map(category => (
+        <FinancialCategory
+            category = { category }
+            costs = {this.costs}>
+        </FinancialCategory>
+
+      ));
+  
+      if(financialLists){
+        this.setState({ financialLists: financialLists, isLoading: false });
+      }
     }
   }
 
   async postData(){
     let d = new Date();
-    let data;
+    let data = this.emptyItem;
+    data.amount = document.getElementById("amountInput").value;
+    data.date = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+    data.description = document.getElementById("descriptionInput").value;
+    data.category = document.getElementById("categoriesInput").value;
 
     await fetch(`http://localhost:8080/financial`, {
       method: 'POST',
@@ -40,7 +66,7 @@ class FinancialPage extends Component{
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body:data
+      body:  JSON.stringify(data)
     }).then(() => {
       this.componentDidMount();
     });
@@ -48,49 +74,36 @@ class FinancialPage extends Component{
 
 
   render() {
-    const {financials, isLoading} = this.state;
+    const {financialLists, isLoading} = this.state;
 
     if (isLoading) {
       return <p>Loading...</p>;
     }
 
-    const financialList = financials.map(elem => (
-      <FinancialElement
-          stat = { elem }>
-      </FinancialElement>
-    ))
-
-
     return(
       <>
-        <h2>Financial Stats</h2>
+        <h2>Financials</h2>
+
 
         <form>
           <h3>Upload</h3>
-          <label htmlFor="name">Name</label>
-          <input type='text' id='nameInput' name='name'></input>
+          <label htmlFor="amount">amount</label>
+          <input type='text' id='amountInput' name='amount'></input>
+          <label htmlFor="description">description</label>
+          <input type='text' id='descriptionInput' name='description'></input>
 
-          <label htmlFor="regularity">Regularity</label>
-          <select id="regularity" name="regularity">
-            <option value="HOUSEHOLD">Household</option> {/* megcsinálni! */}
-            <option value="SHOPPING">Shopping</option>
-            <option value="SCHOOL">School</option>
-            <option value="UNIVERSITY">University</option>
-            <option value="SOMEDAY_STUFF">Someday stuff</option>
+          <label htmlFor="categories">Choose category:</label>
+          <select id="categoriesInput" name="categories">
+            {this.categories.map((value, index) => {
+              return <option value={value} key={"category"+index}>{value.toLowerCase()}</option>
+            })}
           </select>
 
-          <label htmlFor="duration">Duration</label>
-          <input type='text' id='durationInput' name='duration'></input>
-          <label htmlFor="startTime">Start Time</label>
-          <input type='text' id='startInput' name='startTime'></input>
-
-          <label htmlFor='isOfficial'>Is it official?</label>
-          <input type="checkbox" id="isOfficial" value='false'></input>
-
-          <button type="submit" onClick={() => this.postData()}>Save</button>
+          <button type="submit" onClick={() => this.postData()} >Save</button>
         </form>
 
-        <div> { financialList } </div>
+
+        <div> { financialLists } </div>
       </>
     );
   }

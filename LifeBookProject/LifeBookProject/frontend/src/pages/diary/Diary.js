@@ -3,6 +3,15 @@ import DiaryElement from './DiaryElement';
 
 class Diary extends Component{
 
+  emptyItem = {
+    text: '',
+    image: '',
+    video: '',
+    currentMood: '',
+    date: ''
+  };
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +33,7 @@ class Diary extends Component{
 
   async postDiary(){
     let d = new Date();
-    let diary;
+    let diary = this.emptyItem;
     diary.text = document.getElementById("textInput").value;
     diary.image = document.getElementById("imgInput").value;
     diary.video = document.getElementById("videoInput").value;

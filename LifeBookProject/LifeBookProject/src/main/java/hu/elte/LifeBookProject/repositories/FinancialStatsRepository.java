@@ -20,4 +20,10 @@ public interface FinancialStatsRepository extends CrudRepository<FinancialStats,
     @Query("SELECT f FROM FinancialStats f WHERE MONTH(f.date) = ?1 ORDER BY f.date DESC")
     List<FinancialStats> getByMonth(Integer month);
     
+    @Query("SELECT SUM(f.amount) FROM FinancialStats f WHERE f.category <> 'INCOME' ")
+    Integer getCosts();
+ 
+    @Query("SELECT SUM(f.amount) FROM FinancialStats f WHERE f.category = ?1 ")
+    Integer getCostsByCategory(String category);
+    
 }

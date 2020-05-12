@@ -11,15 +11,12 @@ class FinancialElement extends Component{
         console.log(stat);
 
         return(
-            <div key={ stat.id }>
-                <h4>{sport.name}</h4>
+            <div key={ "stat" + toString(stat.id) }>
 
-                <p>{sport.regularity}</p>
-                <p>{sport.duration}</p>
-                <p>{sport.startTime}</p>
-
-                {(sport.isOfficial === true) ? 
-                (<p>Official</p>) : (<p>Not official</p>)}
+                <p>{stat.date}</p>
+                <p>{stat.amount}</p>
+                <p>{stat.description}</p>
+                <button onClick={() => this.props.onDeleteTodo(stat.id)}>&#10008;</button>
 
             </div>
         );

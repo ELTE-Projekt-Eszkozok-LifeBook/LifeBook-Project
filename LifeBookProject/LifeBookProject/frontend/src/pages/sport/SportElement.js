@@ -21,6 +21,8 @@ class SportElement extends Component{
                 {(sport.isOfficial === true) ? 
                 (<p>Official</p>) : (<p>Not official</p>)}
 
+                <button onClick={() => this.props.onDeleteTodo(sport.id)}>&#10008;</button>
+
             </div>
         );
     }
