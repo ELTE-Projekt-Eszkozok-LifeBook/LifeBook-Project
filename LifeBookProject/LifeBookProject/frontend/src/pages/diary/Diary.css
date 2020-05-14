@@ -1,0 +1,159 @@
+@import 'https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap';
+
+body, html{
+	font-family: 'Roboto', sans-serif;
+    height: 100%;
+	font-size: 18px;
+	color: #474747;
+}
+
+/*mobilon általános görgetés marad, nem a fixált háttérkép*/
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+.background-1, .background-2{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    position: relative;
+}
+
+.background-1{
+    background-image: url(https://innerfokus.com/wp-content/uploads/2019/01/books.jpg);
+    height: 700px;
+}
+
+.background-2{
+    background-image: url(https://content.thriveglobal.com/wp-content/uploads/2018/02/1YLlZ96J3p8GFkIh1USVMzg.jpeg);
+    height:500px;
+}
+
+.title{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: black;
+	opacity: 0.8;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.title span{
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 20px;
+}
+
+.text{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+	opacity: 0.8;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.text span{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 18px;
+    font-size: 35px;
+    font-style: bold;
+}
+
+
+.upload{
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px 50px;
+}
+
+.search{
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 50px;
+}
+
+input#dateInput{
+    width: 400px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 15px;
+    transition: width 0.4s ease-in-out;
+}
+
+input#dateInput:focus{
+    width: 100%;
+}
+
+button{
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #cccccc;
+    color: #000000;
+}
+
+form{
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+label{
+    padding: 12px 10px 12px 10px;
+}
+
+label#text{
+    float: left;
+}
+
+textarea#textInput{
+    width: 45%;
+    height: 300px;
+    resize: none;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 15px;
+    float: left;
+}
+
+input#moodInput, input#imgInput, input#videoInput{
+    width: 45%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 15px;
+}
+
+.right-side{
+    text-align: right;
+}
+

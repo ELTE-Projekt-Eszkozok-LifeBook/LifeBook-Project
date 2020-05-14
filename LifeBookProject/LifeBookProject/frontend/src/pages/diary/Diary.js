@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DiaryElement from './DiaryElement';
+import './Diary.css';
 
 class Diary extends Component{
 
@@ -79,28 +80,51 @@ class Diary extends Component{
 
     return(
       <>
-        <h2>Diary</h2>
-
-        <div>
-          <h3>Get registry by date</h3>
-          <input type='text' id='dateInput'></input>
-          <button onClick={() => this.searchDiary()}>Search</button>
-        </div>
-
-        <form>
-          <h3>Upload</h3>
-          <label htmlFor="text">Text</label>
-          <input type='text' id='textInput' name='text'></input>
-          <label htmlFor="mood">Mood</label>
-          <input type='text' id='moodInput' name='mood'></input>
-          <label htmlFor="image">Image</label>
-          <input type='text' id='imgInput' name='image'></input>
-          <label htmlFor="video">Video</label>
-          <input type='text' id='videoInput' name='video'></input>
-          <button type="submit" onClick={() => this.postDiary()}>Save</button>
-        </form>
-
-        <div> { diaryList } </div>
+		<div>
+                    <div class="background-1">
+                        <div class="title">
+                            <span>Your thoughts are the most important thing in yor life... Precise them!</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="upload">
+                            <h2>Dear Diary...</h2>
+                            <p>Do you feel bad? Or rather delightful? Today was your best day ever in your life? Or your head is just filled with too much thoughts?
+                                The solution is LIFEBook app. It functions as your own online diary that you can bring with yourself wherever you go. An easy-using, long-lasting, helpful assistant
+                                that can help organize your feelings and experiences. Feel free to give it a try.<br></br> We promise you won't regret it ;D</p>
+                            
+                        <form>
+                            <textarea id='textInput' name='text' placeholder="Write your day..."></textarea>
+                            <div class="right-side">
+                            <label htmlFor="mood">Mood</label>
+                            <input type='text' id='moodInput' name='mood' placeholder="How are you feeling..."></input><br></br>
+                            <label htmlFor="image">Image</label>
+                            <input type='text' id='imgInput' name='image' placeholder="Add picture by url..."></input><br></br>
+                            <label htmlFor="video">Video</label>
+                            <input type='text' id='videoInput' name='video' placeholder="Add video by url..."></input><br></br>
+                            <button type="submit" onClick={() => this.postDiary()}>Save</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                                    
+                    <div class="background-2">
+                        <div class="text">
+                            <span>Memories</span>
+                        </div>
+                    </div>
+                                    
+                    <div class="search">
+                        <h2>Searching through your entries</h2>
+                        <p>If you want to modify an entry or just reread it you can find it by its date.</p>
+                        
+                        <input type='text' id='dateInput' placeholder="Search..."></input><br></br>
+                        
+                        <button onClick={() => this.searchDiary()}>Search</button>
+                        <button onClick={() => this.diaryList }>Show all entries</button>
+                    </div>
+                </div>
+               
       </>
     );
   }

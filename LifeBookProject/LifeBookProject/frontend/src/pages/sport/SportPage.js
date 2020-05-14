@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SportElement from './SportElement';
+import './Sport.css';
+
 
 class SportPage extends Component{
 
@@ -82,34 +84,46 @@ class SportPage extends Component{
 
 
     return(
-      <>
-        <h2>Sport Activities</h2>
-
-        <form>
-          <h3>Upload</h3>
-          <label htmlFor="name">Name</label>
-          <input type='text' id='nameInput' name='name'></input>
-
-          <label htmlFor="regularity">Regularity</label>
-          <select id="regularity" name="regularity">
-            {this.regularity.map((value, index) => {
-              return <option value={value} key={index}>{value.toLowerCase()}</option>
-            })}
-          </select>
-
-          <label htmlFor="duration">Duration</label>
-          <input type='text' id='durationInput' name='duration'></input>
-          <label htmlFor="startTime">Start Time</label>
-          <input type='text' id='startInput' name='startTime'></input>
-
-          <label htmlFor='isOfficial'>Is it official?</label>
-          <input type="checkbox" id="isOfficial" value='false'></input>
-
-          <button type="submit" onClick={() => this.postSport()}>Save</button>
-        </form>
-
-        <div> { sportList } </div>
-      </>
+     <>
+		<div class="background-4">
+			<div class="title">
+				<span> Find your own inner peace by doing sport daily.</span>
+			</div>
+		</div>
+		<div class='sportFormTitle'>
+			<h2>My sport habits</h2>
+			<p>Now you can manage your sport habits.</p>
+		</div>
+		<form>
+			<div>
+				<input type='text' id='nameInput' name='name' placeholder='What sport do you do...'></input>
+			</div>
+			<div class='check'>
+				<label class ="officialLabel" htmlFor='isOfficial'>Is it official?
+					<input type="checkbox" id="isOfficial" value='false'></input>
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div>
+				<input type='text' id='durationInput' name='duration' placeholder='Duration'></input>
+			</div>
+			<div>
+				<input type='text' id='startInput' name='startTime' placeholder='Start Time'></input>
+			</div>
+			<div class="regularityselect">
+				<label htmlFor="regularity">Regularity</label>
+				<select class="select-css-sport" id="regularity" name="regularity">
+					{this.regularity.map((value, index) => {
+					return <option value={value} key={index}>{value.toUpperCase()}</option>
+				})}
+				</select>
+			</div>
+			<div class="submit">
+				<button class = "submitbut" type="submit" onClick={() => this.postSport()}>Save</button>
+			</div>
+		</form>
+		<div> { sportList } </div>
+	 </>
     );
   }
 

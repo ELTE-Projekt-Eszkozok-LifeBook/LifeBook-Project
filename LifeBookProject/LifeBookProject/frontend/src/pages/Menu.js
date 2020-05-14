@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-
+import './Menu.css';
 
 class Menu extends Component{
     
   render() {
       return (
         <>
-            <NavLink exact to="/diary">
-                <button>Diary</button>
-            </NavLink>
-            <NavLink exact to="/todos">
-                <button>To Do List</button>
-            </NavLink>
-            <NavLink exact to="/timetable">
-                <button>Timetable</button>
-            </NavLink>
-            <NavLink exact to="/sport">
-                <button>Sport activity</button>
-            </NavLink>
-            <NavLink exact to="/eating">
-                <button>Eating habits</button>
-            </NavLink>
-            <NavLink exact to="/financials">
-                <button>Financial Stats</button>
-            </NavLink>
+            <div class ="menu">
+                    <NavLink exact to="/diary">My Diary</NavLink>
+                    <NavLink exact to="/todos">ToDo's</NavLink>
+                    <NavLink exact to="/timetable">Timetable</NavLink>
+                    <NavLink exact to="/sport">Sport</NavLink>
+                    <NavLink exact to="/eating">Eating</NavLink>
+                    <NavLink exact to="/financials">Money</NavLink>
+                </div>
 
         </>
       );

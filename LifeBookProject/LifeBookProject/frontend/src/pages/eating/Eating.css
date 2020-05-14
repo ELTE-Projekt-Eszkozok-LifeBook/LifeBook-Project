@@ -1,0 +1,166 @@
+@import 'https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Roboto&display=swap';
+
+body, html{
+	font-family: 'Roboto', sans-serif;
+    height: 100%;
+	font-size: 18px;
+	color: #474747;
+}
+
+/*mobilon általános görgetés marad, nem a fixált háttérkép*/
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+.background-5{
+    background-image: url(https://www.tefal-me.com/medias/Healthy-Eating-Rules-4-Add-Fruits-Vegetables-to-Every-Meal.jpg?context=bWFzdGVyfGltYWdlc3w0NTQzMjR8aW1hZ2UvanBlZ3xpbWFnZXMvaDJlL2gwZC8xMjgyMDYyMDI3OTgzOC5qcGd8YjkwNjFiYjMwYWUwNDBhNzg0NmM1ZTEwYzVkNmI2MTJiMjc2NDE1N2UwMzZkNjA4MTRkMGJjY2MwNGMzOTY3ZA);
+    height: 700px;
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    position: relative;
+}
+
+.title{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: black;
+	opacity: 0.8;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.title span{
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 20px;
+}
+
+.eatingFormTitle{
+	text-align: center;
+}
+
+input[type=text] {
+	width: 98%;
+	font-size: 18px;
+	margin: 8px 8px;
+	box-sizing: border-box;
+	padding: 12px 20px;
+}
+
+
+.select-css-eating {
+	display: left;
+	color: #474747;
+	line-height: 1.3;
+	padding: 3px 8px 3px 8px;
+	width: 75%;
+	max-width: 75%;
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #ccc;
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+	font-size: 18px;
+}
+.select-css-eating::-ms-expand {
+	display: none;
+}
+
+.select-css-eating:focus {
+	background-color: #ccc;
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #474747;
+	outline: none;
+}
+.select-css-eating option {
+	font-weight:normal;
+}
+
+.foodLabel {
+  display: left;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  padding-bottom: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.foodLabel input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  display: left;
+  position: absolute;
+  top: 16px;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+  background-color: #ccc;
+}
+.foodLabel:hover input ~ .checkmark {
+  background-color: #ff6347;
+}
+.foodLabel input:checked ~ .checkmark {
+  background-color: #ff6347;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.foodLabel input:checked ~ .checkmark:after {
+  display: block;
+}
+.foodLabel .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.submitbut {
+	width: 100%;
+	font-size: 18px;
+}
+button{
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #cccccc;
+    color: #000000;
+}

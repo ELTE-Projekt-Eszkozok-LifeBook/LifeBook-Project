@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EatingHabitElement from './EatingHabitElement';
+import './Eating.css';
 
 class EatingHabitPage extends Component{
 
@@ -95,28 +96,34 @@ class EatingHabitPage extends Component{
 
     return(
       <>
-        <h2>EatingHabit Activities</h2>
+		<div class="background-5">
+			<div class="title">
+				<span> You can't control everything in your life, but you can control what you eat.</span>
+			</div>
+		</div>
+		<div class='eatingFormTitle'>
+			<h2>My eating habits</h2>
+			<p>Here you can manage your eating habits.</p>
+		</div>
 
         <form>
-          <h3>Upload</h3>
-          <label htmlFor="name">Name of the food</label>
-          <input type='text' id='nameInput' name='name'></input>
-
-          <label htmlFor="frequency">Frequency</label>
-          <select id="frequencyInput" name="frequency">
-            {this.frequency.map((value, index) => {
-              return <option value={value} key={index}>{value.toLowerCase()}</option>
-            })}
-          </select>
-
-          <label htmlFor="type">Type</label>
-          <input type='text' id='typeInput' name='type'></input>
-          <label htmlFor="portion">Portion</label>
-          <input type='text' id='portionInput' name='portion'></input>
-
-          <label htmlFor='isFood'>Is it food or other?</label>
-          <input type="checkbox" id="isFood" value='false'></input>
-
+			<div class='check'>
+				<label class="foodLabel" htmlFor='isFood'>Is it food?
+					<input type="checkbox" id="isFood" value='false'></input>
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<input type='text' id='nameInput' name='name' placeholder='Name of the food'></input>
+			<div class="frequencyselect">
+				<label htmlFor="frequency">Frequency</label>
+				<select class="select-css-eating" id="frequencyInput" name="frequency">
+				{this.frequency.map((value, index) => {
+				  return <option value={value} key={index}>{value.toUpperCase()}</option>
+				})}
+				</select>
+			</div>
+			<input type='text' id='typeInput' name='type' placeholder="Food type"></input>
+			<input type='text' id='portionInput' name='portion' placeholder="Portion"></input>
           <button type="submit" onClick={() => this.postEatingHabit()}>Save</button>
         </form>
 
