@@ -49,14 +49,11 @@ public class FinancialStatsEntityTest {
         assertThat(stats).isNotEmpty();
         assertThat(stats).hasSize(2);
         
-        stats = financialStatsRepo.getByCategory("COST");
+        stats = financialStatsRepo.getByCategory("CLOTHES");
         assertThat(stats).isNotNull();
         assertThat(stats).isNotEmpty();
         assertThat(stats).hasSize(1);
-        
-        stats = financialStatsRepo.getByCategory("SOMETHING");
-        assertThat(stats).isNotNull();
-        assertThat(stats).isEmpty();
+
     }
     
      @Test
