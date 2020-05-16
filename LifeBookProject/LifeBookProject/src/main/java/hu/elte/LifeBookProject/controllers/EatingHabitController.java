@@ -53,7 +53,10 @@ public class EatingHabitController {
     //új étkezési szokás felvitele
     @PostMapping("")
     public ResponseEntity<EatingHabit> post(@RequestBody EatingHabit eatingHabit) {
-        return ResponseEntity.ok(eatingHabitRepo.save(eatingHabit));
+        if (eatingHabitRepo.getByName(eatingHabit.getName()).equals(null)) {
+            return ResponseEntity.ok(eatingHabitRepo.save(eatingHabit));
+        }
+        return ResponseEntity.ok().build();
     }
     
     //étkezési szokás törlése elnevezés alapján

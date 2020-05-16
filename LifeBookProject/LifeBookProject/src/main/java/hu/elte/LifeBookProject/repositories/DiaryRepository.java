@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DiaryRepository extends CrudRepository<Diary, Long> {
     
+    @Query("SELECT p FROM Diary p ORDER BY p.date DESC")
+    List<Diary> findAllEntries();
+    
     @Query("SELECT p FROM Diary p WHERE p.date = ?1")
     List<Diary> getPostsByDate(Date dates);
     

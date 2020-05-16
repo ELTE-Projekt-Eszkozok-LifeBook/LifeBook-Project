@@ -63,7 +63,10 @@ public class SportActivityController {
     //új sportolási tevékenységek felvitele
     @PostMapping("")
     public ResponseEntity<SportActivity> post(@RequestBody SportActivity sportActivity) {
-        return ResponseEntity.ok(sportActivityRepo.save(sportActivity));
+        if (sportActivityRepo.getByName(sportActivity.getName()).equals(null)) {
+            return ResponseEntity.ok(sportActivityRepo.save(sportActivity));
+        }
+        return ResponseEntity.ok().build();
     }
     
     //sportolási tevékenység törlése elnevezés alapján

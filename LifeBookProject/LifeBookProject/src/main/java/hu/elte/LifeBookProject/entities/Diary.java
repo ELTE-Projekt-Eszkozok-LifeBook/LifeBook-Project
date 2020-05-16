@@ -1,6 +1,5 @@
 package hu.elte.LifeBookProject.entities;
 
-import org.hibernate.type.ImageType;
 
 import java.sql.Date;
 
@@ -27,7 +26,7 @@ public class Diary extends BaseEntity {
     private String text;
 
     @Column
-    private ImageType image;
+    private String image;
 
     @Column
     private String video;
