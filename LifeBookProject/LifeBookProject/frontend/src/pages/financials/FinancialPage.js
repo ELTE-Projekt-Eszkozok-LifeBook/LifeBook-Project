@@ -3,6 +3,7 @@ import FinancialCategory from './FinancialCategory';
 import {emptyFinancial} from '../../domain/EmptyElems';
 import {financialCategories} from '../../domain/Enums';
 import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import './Financial.css';
 
 class FinancialPage extends Component{
 
@@ -70,26 +71,36 @@ class FinancialPage extends Component{
 
     return(
       <>
-        <h2>Financials</h2>
-
-
+        <div className="background-6">
+			<div className="title">
+				<span> Never spend your money, before you have earned it.</span>
+			</div>
+		</div>
+		<div className='financialFormTitle'>
+			<h2>Financials</h2>
+			<p>Here you can manage your financials.</p>
+		</div>
+			
         <form>
-          <h3>Upload</h3>
-          <label htmlFor="amount">amount</label>
-          <input type='text' id='amountInput' name='amount'></input>
-          <label htmlFor="description">description</label>
-          <input type='text' id='descriptionInput' name='description'></input>
-
-          <label htmlFor="categories">Choose category:</label>
-          <select id="categoriesInput" name="categories">
-            {this.categories.map((value, index) => {
-              return <option value={value} key={"category"+index}>{value.toLowerCase()}</option>
-            })}
-          </select>
-
-          <button type="submit" onClick={() => this.postData()} >Save</button>
+          <label htmlFor="amount">
+          <input type='text' id='amountInput' name='amount' placeholder='How much money?'></input></label>
+          <label htmlFor="description">
+          <input type='text' id='descriptionInput' name='description' placeholder='Write here the description'></input></label>
+		  <div className="moneycategoryselect">
+			  <label htmlFor="categories">Choose category:</label>
+			  <select className="select-css-money" id="categoriesInput" name="categories">
+				{this.categories.map((value, index) => {
+				  return <option value={value} key={"category"+index}>{value.toLowerCase()}</option>
+				})}
+			  </select>
+		  </div>
+          <button className="submitbut" type="submit" onClick={() => this.postData()} >Save</button>
         </form>
-
+		<div className="background-financiallist">
+			<div className="text">
+				<span>My financial list</span>
+			</div>
+        </div>
 
         <div> { financialLists } </div>
       </>

@@ -90,11 +90,11 @@ class Diary extends Component{
                         <form>
                             <textarea id='textInput' name='text' placeholder="Write your day..."></textarea>
                             <div className="right-side">
-                            <label htmlFor="mood">Mood</label>
+                            <label htmlFor="mood"></label>
                             <input type='text' id='moodInput' name='mood' placeholder="How are you feeling..."></input><br></br>
-                            <label htmlFor="image">Image</label>
+                            <label htmlFor="image"></label>
                             <input type='text' id='imgInput' name='image' placeholder="Add picture by url..."></input><br></br>
-                            <label htmlFor="video">Video</label>
+                            <label htmlFor="video"></label>
                             <input type='text' id='videoInput' name='video' placeholder="Add video by url..."></input><br></br>
                             <button type="submit" onClick={() => this.postDiary()}>Save</button>
                             </div>

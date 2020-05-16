@@ -69,12 +69,12 @@ class SportPage extends Component{
 
     return(
      <>
-		<div class="background-4">
-			<div class="title">
+		<div className="background-4">
+			<div className="title">
 				<span> Find your own inner peace by doing sport daily.</span>
 			</div>
 		</div>
-		<div class='sportFormTitle'>
+		<div className='sportFormTitle'>
 			<h2>My sport habits</h2>
 			<p>Now you can manage your sport habits.</p>
 		</div>
@@ -82,10 +82,10 @@ class SportPage extends Component{
 			<div>
 				<input type='text' id='nameInput' name='name' placeholder='What sport do you do...'></input>
 			</div>
-			<div class='check'>
-				<label class ="officialLabel" htmlFor='isOfficial'>Is it official?
+			<div className='check'>
+				<label className ="officialLabel" htmlFor='isOfficial'>Is it official?
 					<input type="checkbox" id="isOfficial" value='false'></input>
-					<span class="checkmark"></span>
+					<span className="checkmark"></span>
 				</label>
 			</div>
 			<div>
@@ -94,18 +94,24 @@ class SportPage extends Component{
 			<div>
 				<input type='text' id='startInput' name='startTime' placeholder='Start Time'></input>
 			</div>
-			<div class="regularityselect">
+			<div className="regularityselect">
 				<label htmlFor="regularity">Regularity</label>
-				<select class="select-css-sport" id="regularity" name="regularity">
+				<select className="select-css-sport" id="regularity" name="regularity">
 					{this.regularity.map((value, index) => {
 					return <option value={value} key={index}>{value.toUpperCase()}</option>
 				})}
 				</select>
 			</div>
-			<div class="submit">
-				<button class = "submitbut" type="submit" onClick={() => this.postSport()}>Save</button>
+			<div className="submit">
+				<button className = "submitbut" type="submit" onClick={() => this.postSport()}>Save</button>
 			</div>
 		</form>
+		
+		<div className="background-sportlist">
+			<div className="text">
+				<span>My sporting habits</span>
+			</div>
+        </div>
 		<div> { sportList } </div>
 	 </>
     );

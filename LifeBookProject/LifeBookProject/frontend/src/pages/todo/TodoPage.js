@@ -87,21 +87,12 @@ class TodoPage extends Component{
                         </div>
                     </div>
                                     
-                    <div className="background-2">
+                    <div className="todolistbackground">
                         <div className="text">
-                            <span>Memories</span>
+                            <span>My tasks</span>
                         </div>
                     </div>
-                                    
-                    <div className="search">
-                        <h2>Searching through your entries</h2>
-                        <p>If you want to modify an entry or just reread it you can find it by its date.</p>
-                        
-                        <input type='text' id='dateInput' placeholder="Search..."></input><br></br>
-                        
-                        <button onClick={() => this.searchDiary()}>Search</button>
-                        <button onClick={() => this.diaryList }>Show all entries</button>
-                    </div>
+
 					<div className="todolist"> { todoLists } </div>
                 </div>
                

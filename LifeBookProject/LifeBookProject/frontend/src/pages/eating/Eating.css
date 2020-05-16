@@ -16,8 +16,19 @@ body, html{
 }
 
 .background-5{
-    background-image: url(https://www.tefal-me.com/medias/Healthy-Eating-Rules-4-Add-Fruits-Vegetables-to-Every-Meal.jpg?context=bWFzdGVyfGltYWdlc3w0NTQzMjR8aW1hZ2UvanBlZ3xpbWFnZXMvaDJlL2gwZC8xMjgyMDYyMDI3OTgzOC5qcGd8YjkwNjFiYjMwYWUwNDBhNzg0NmM1ZTEwYzVkNmI2MTJiMjc2NDE1N2UwMzZkNjA4MTRkMGJjY2MwNGMzOTY3ZA);
+    background-image: url('./eating.jpg');
     height: 700px;
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    position: relative;
+}
+
+.foodlistBackground{
+	background-image: url('./foodlist.png');
+    height: 500px;
 	background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -49,7 +60,7 @@ body, html{
 	text-align: center;
 }
 
-input[type=text] {
+.eatingForm:input[type=text] {
 	width: 98%;
 	font-size: 18px;
 	margin: 8px 8px;
@@ -164,3 +175,36 @@ button:hover{
     background-color: #cccccc;
     color: #000000;
 }
+
+.searchfood{
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 50px;
+}
+
+input#searchInput{
+	width: 400px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 15px;
+    transition: width 0.4s ease-in-out;
+}
+
+input#searchInput:focus{
+	width: 100%;
+}
+
+
+h3{
+	text-align: center;
+}
+
+form#searchform {
+	text-align: center;
+}
+

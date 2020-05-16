@@ -80,27 +80,27 @@ class EatingHabitPage extends Component{
 
     return(
       <>
-		<div class="background-5">
-			<div class="title">
+		<div className="background-5">
+			<div className="title">
 				<span> You can't control everything in your life, but you can control what you eat.</span>
 			</div>
 		</div>
-		<div class='eatingFormTitle'>
+		<div className='eatingFormTitle'>
 			<h2>My eating habits</h2>
 			<p>Here you can manage your eating habits.</p>
 		</div>
-
+	<div className="eatingForm">
     <form>
-			<div class='check'>
-				<label class="foodLabel" htmlFor='isFood'>Is it food?
+			<div className='check'>
+				<label className="foodLabel" htmlFor='isFood'>Is it food?
 					<input type="checkbox" id="isFood" value='false'></input>
-					<span class="checkmark"></span>
+					<span className="checkmark"></span>
 				</label>
 			</div>
 			<input type='text' id='nameInput' name='name' placeholder='Name of the food'></input>
-			<div class="frequencyselect">
+			<div className="frequencyselect">
 				<label htmlFor="frequency">Frequency</label>
-				<select class="select-css-eating" id="frequencyInput" name="frequency">
+				<select className="select-css-eating" id="frequencyInput" name="frequency">
 				{this.frequency.map((value, index) => {
 				  return <option value={value} key={index}>{value.toUpperCase()}</option>
 				})}
@@ -110,14 +110,20 @@ class EatingHabitPage extends Component{
 			<input type='text' id='portionInput' name='portion' placeholder="Portion"></input>
           <button type="submit" onClick={() => this.postEatingHabit()}>Save</button>
     </form>
-
-
-        <form>
+	</div>
+		<div className="foodlistBackground">
+			<div className="text">
+				<span>Food list</span>
+			</div>
+		</div>
+		<div className="searchfood">
+        <form id='searchform'>
           <h3>Search</h3>
-          <label htmlFor="type">Food type</label>
-          <input type='text' id='searchInput' name='type'></input>
-          <button type="submit" onClick={() => this.searchEatingHabit()}>Search</button>
+          <label htmlFor="type">If you want to modify an entry or just reread it you can find it by its type.</label><br></br>
+          <input type='text' id='searchInput' name='type' placeholder="I'm searching for..."></input><br></br>
+          <button className="searchButton" type="submit" onClick={() => this.searchEatingHabit()}>Search</button>
         </form>
+		</div>
 
         {(eatingHabitList.length == 0) ? 
           (<p>There are no recorded foods.</p>) : (<div> { eatingHabitList } </div>)}

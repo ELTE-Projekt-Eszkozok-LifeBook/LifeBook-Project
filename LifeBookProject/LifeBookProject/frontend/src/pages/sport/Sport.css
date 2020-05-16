@@ -17,8 +17,19 @@ body, html{
 
 
 .background-4{
-    background-image: url(https://www.sheknows.com/wp-content/uploads/2019/05/do-you-hate-meditating-so-do-these-people-but-they-do-it-anyway.png);
+    background-image: url('./sport.png');
     height: 700px;
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    position: relative;
+}
+
+.background-sportlist{
+	background-image: url('./sportlist.png');
+    height: 500px;
 	background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
