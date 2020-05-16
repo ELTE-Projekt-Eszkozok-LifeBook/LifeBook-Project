@@ -7,7 +7,7 @@ class Menu extends Component{
   render() {
       return (
         <>
-            <div class ="menu">
+            <div className ="menu">
                     <NavLink exact to="/diary">My Diary</NavLink>
                     <NavLink exact to="/todos">ToDo's</NavLink>
                     <NavLink exact to="/timetable">Timetable</NavLink>

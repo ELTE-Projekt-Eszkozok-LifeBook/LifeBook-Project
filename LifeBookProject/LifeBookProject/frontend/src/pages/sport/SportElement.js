@@ -11,7 +11,7 @@ class SportElement extends Component{
         console.log(sport);
 
         return(
-            <div key={ sport.id }>
+            <div key={ sport.name }>
                 <h4>{sport.name}</h4>
 
                 <p>{sport.regularity}</p>
@@ -21,7 +21,7 @@ class SportElement extends Component{
                 {(sport.isOfficial === true) ? 
                 (<p>Official</p>) : (<p>Not official</p>)}
 
-                <button onClick={() => this.props.onDeleteTodo(sport.id)}>&#10008;</button>
+                <button onClick={() => this.props.onDeleteSport(sport.name)}>&#10008;</button>
 
             </div>
         );

@@ -11,7 +11,7 @@ class EatingHabitElement extends Component{
         console.log(eatingHabit);
 
         return(
-            <div key={ eatingHabit.id }>
+            <div key={ eatingHabit.name }>
                 <h4>{eatingHabit.name}</h4>
 
                 <p>{eatingHabit.type}</p>
@@ -22,7 +22,7 @@ class EatingHabitElement extends Component{
                 <p>{eatingHabit.frequency}</p>
                 <p>{eatingHabit.portion}</p>
 
-                <button onClick={() => this.props.onDeleteTodo(eatingHabit.id)}>&#10008;</button>
+                <button onClick={() => this.props.onDeleteTodo(eatingHabit.name)}>&#10008;</button>
 
             </div>
         );

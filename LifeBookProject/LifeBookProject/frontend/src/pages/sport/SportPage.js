@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
 import SportElement from './SportElement';
+import {emptySport} from '../../domain/EmptyElems'
 import './Sport.css';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import { sportRegularity } from '../../domain/Enums';
 
 
 class SportPage extends Component{
-
-  emptyItem = {
-    name: '',
-    regularity: '',
-    duration: '',
-    startTime: '',
-    isOfficial: '',
-  };
 
   constructor(props){
     super(props);
     this.state = {
         isLoading: true,
-        sports: null
+        sports: []
     };
-    this.regularity = ["DAILY", "WEAKLY", "MONTHLY", "EVERY_YEAR"];
-    this.componentDidMount = this.componentDidMount.bind(this);
+    this.regularity = sportRegularity;
     this.postSport = this.postSport.bind(this);
+    this.remove = this.remove.bind(this);
   }
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:8080/sportactivity');
+    const response = await get('http://localhost:8080/sportactivity');
     const body = await response.json();
     console.log(body);
     if(body){
@@ -35,34 +30,23 @@ class SportPage extends Component{
 
   async postSport(){
     let d = new Date();
-    let sport = this.emptyItem;
+    let sport = emptySport;
     sport.name = document.getElementById("nameInput").value;
     sport.regularity = document.getElementById("regularity").value;
     sport.duration = document.getElementById("durationInput").value;
     sport.startTime = document.getElementById("startInput").value;
     sport.isOfficial = document.getElementById("isOfficial").value;
 
-    await fetch(`http://localhost:8080/sport`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body:sport
-    }).then(() => {
+    await post(`http://localhost:8080/sportactivity`, sport)
+    .then(() => {
       this.componentDidMount();
     });
   }
 
-  async remove(id) {
-    await fetch(`http://localhost:8080/sport/delete/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(() => {
-      let updatedSports = [...this.state.sports].filter(i => i.id !== id);
+  async remove(name) {
+    await remove(`http://localhost:8080/sportactivity/delete/${name}`)
+    .then(() => {
+      let updatedSports = [...this.state.sports].filter(i => i.name !== name);
       this.setState({sports: updatedSports});
     });
   }
@@ -78,7 +62,7 @@ class SportPage extends Component{
     const sportList = sports.map(sport => (
       <SportElement
           sport = { sport }
-          onDeleteTodo = {this.remove}>
+          onDeleteSport = {this.remove}>
       </SportElement>
     ))
 

@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import EatingHabitElement from './EatingHabitElement';
+import {emptyEatingHabit} from '../../domain/EmptyElems';
+import {eatingFrequency} from '../../domain/Enums';
 import './Eating.css';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class EatingHabitPage extends Component{
-
-  emptyItem = {
-    name: '',
-    type: '',
-    isFood: '',
-    frequency: '',
-    portion: '',
-  };
 
   constructor(props){
     super(props);
@@ -18,15 +13,15 @@ class EatingHabitPage extends Component{
         isLoading: true,
         eatingHabits: []
     };
-    this.frequency = ["DAILY", "WEAKLY", "MONTHLY", "EVERY_YEAR"];
+    this.frequency = eatingFrequency;
     this.componentDidMount = this.componentDidMount.bind(this);
     this.postEatingHabit = this.postEatingHabit.bind(this);
+    this.remove = this.remove.bind(this);
   }
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:8080/eatinghabits');
+    const response = await get('http://localhost:8080/eatinghabits');
     const body = await response.json();
-    console.log(body);
     if(body){
       this.setState({ eatingHabits: body, isLoading: false });
     }
@@ -34,34 +29,23 @@ class EatingHabitPage extends Component{
 
   async postEatingHabit(){
     let d = new Date();
-    let eatingHabit = this.emptyItem;
+    let eatingHabit = emptyEatingHabit;
     eatingHabit.name = document.getElementById("nameInput").value;
     eatingHabit.type = document.getElementById("typeInput").value.toLowerCase();
     eatingHabit.isFood = document.getElementById("isFood").value;
     eatingHabit.frequency = document.getElementById("frequencyInput").value;
     eatingHabit.portion = document.getElementById("portionInput").value;
 
-    await fetch(`http://localhost:8080/eatinghabits`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body:eatingHabit
-    }).then(() => {
+    await post(`http://localhost:8080/eatinghabits`, eatingHabit)
+    .then(() => {
       this.componentDidMount();
     });
   }
 
-  async remove(id) {
-    await fetch(`http://localhost:8080/eatinghabits/delete/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(() => {
-      let updatedEatingHabits = [...this.state.eatingHabits].filter(i => i.id !== id);
+  async remove(name) {
+    await remove(`http://localhost:8080/eatinghabits/delete/${name}`)
+    .then(() => {
+      let updatedEatingHabits = [...this.state.eatingHabits].filter(i => i.name !== name);
       this.setState({eatingHabits: updatedEatingHabits});
     });
   }
@@ -70,7 +54,7 @@ class EatingHabitPage extends Component{
   async searchEatingHabit(){
     const type = document.getElementById('searchInput').value;
     if(type){
-      const response = await fetch('http://localhost:8080/eatinghabits/type/' + type);
+      const response = await get('http://localhost:8080/eatinghabits/type/' + type);
       const body = await response.json();
       if(body){
         this.setState({ eatingHabits: body, isLoading: false });
@@ -106,7 +90,7 @@ class EatingHabitPage extends Component{
 			<p>Here you can manage your eating habits.</p>
 		</div>
 
-        <form>
+    <form>
 			<div class='check'>
 				<label class="foodLabel" htmlFor='isFood'>Is it food?
 					<input type="checkbox" id="isFood" value='false'></input>
@@ -125,7 +109,7 @@ class EatingHabitPage extends Component{
 			<input type='text' id='typeInput' name='type' placeholder="Food type"></input>
 			<input type='text' id='portionInput' name='portion' placeholder="Portion"></input>
           <button type="submit" onClick={() => this.postEatingHabit()}>Save</button>
-        </form>
+    </form>
 
 
         <form>

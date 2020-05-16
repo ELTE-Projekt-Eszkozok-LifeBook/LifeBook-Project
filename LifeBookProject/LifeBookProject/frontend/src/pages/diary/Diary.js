@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import DiaryElement from './DiaryElement';
+import {emptyDiary} from '../../domain/EmptyElems';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 import './Diary.css';
 
 class Diary extends Component{
-
-  emptyItem = {
-    text: '',
-    image: '',
-    video: '',
-    currentMood: '',
-    date: ''
-  };
-
 
   constructor(props) {
     super(props);
@@ -20,49 +13,50 @@ class Diary extends Component{
       diaries: []
     };
     this.postDiary = this.postDiary.bind(this);
+    this.searchDiary = this.searchDiary.bind(this);
+    this.listDiaries = this.listDiaries.bind(this);
   }
 
-
-
   async componentDidMount() {
-    const response = await fetch('http://localhost:8080/diary');
-    const body = await response.json();
-    if(body){
-      this.setState({ diaries: body, isLoading: false });
-    }
+      this.setState({ isLoading: false });
   }
 
   async postDiary(){
     let d = new Date();
-    let diary = this.emptyItem;
+    let diary = emptyDiary;
     diary.text = document.getElementById("textInput").value;
     diary.image = document.getElementById("imgInput").value;
     diary.video = document.getElementById("videoInput").value;
     diary.currentMood = document.getElementById("moodInput").value;
-    diary.date = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() ;
+    if(d.getMonth()+1 / 10  < 10){
+      diary.date = d.getFullYear() + "-0" + (d.getMonth()+1) + "-" + d.getDate() ;
+    } else {
+      diary.date = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() ;
+    }
 
-    await fetch(`http://localhost:8080/diary`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body:diary
-    }).then(() => {
-      this.componentDidMount();
-    });
+    await post('http://localhost:8080/diary', diary)
   }
 
   async searchDiary(){
     var date = document.getElementById("dateInput").value;
     if(date){
-      const response = await fetch('http://localhost:8080/diary/date/' + date);
+      const response = await get('http://localhost:8080/diary/date/' + date);
       const body = await response.json();
       if(body){
         this.setState({ diaries: body, isLoading: false });
       }
     }
   }
+
+
+  async listDiaries(){
+    const response = await get('http://localhost:8080/diary');
+    const body = await response.json();
+    if(body){
+      this.setState({ diaries: body, isLoading: false });
+    }
+  }
+
 
   render() {
     const {diaries, isLoading} = this.state;
@@ -72,22 +66,22 @@ class Diary extends Component{
     }
 
     const diaryList = diaries.map(diary => (
-      <DiaryElement
-          diary = { diary }>
-      </DiaryElement>
+        <DiaryElement
+            diary = { diary }>
+        </DiaryElement>
     ))
 
 
     return(
       <>
-		<div>
-                    <div class="background-1">
-                        <div class="title">
+		    <div>
+                    <div className="background-1">
+                        <div className="title">
                             <span>Your thoughts are the most important thing in yor life... Precise them!</span>
                         </div>
                     </div>
                     <div>
-                        <div class="upload">
+                        <div className="upload">
                             <h2>Dear Diary...</h2>
                             <p>Do you feel bad? Or rather delightful? Today was your best day ever in your life? Or your head is just filled with too much thoughts?
                                 The solution is LIFEBook app. It functions as your own online diary that you can bring with yourself wherever you go. An easy-using, long-lasting, helpful assistant
@@ -95,7 +89,7 @@ class Diary extends Component{
                             
                         <form>
                             <textarea id='textInput' name='text' placeholder="Write your day..."></textarea>
-                            <div class="right-side">
+                            <div className="right-side">
                             <label htmlFor="mood">Mood</label>
                             <input type='text' id='moodInput' name='mood' placeholder="How are you feeling..."></input><br></br>
                             <label htmlFor="image">Image</label>
@@ -108,22 +102,31 @@ class Diary extends Component{
                         </div>
                     </div>
                                     
-                    <div class="background-2">
-                        <div class="text">
+                    <div className="background-2">
+                        <div className="text">
                             <span>Memories</span>
                         </div>
                     </div>
                                     
-                    <div class="search">
+                    <div className="search">
                         <h2>Searching through your entries</h2>
                         <p>If you want to modify an entry or just reread it you can find it by its date.</p>
                         
                         <input type='text' id='dateInput' placeholder="Search..."></input><br></br>
                         
                         <button onClick={() => this.searchDiary()}>Search</button>
-                        <button onClick={() => this.diaryList }>Show all entries</button>
+                        <button onClick={() => this.listDiaries()}>Show all entries</button>
                     </div>
-                </div>
+
+                     {(!this.isLoading) ? (
+                      <div>
+                        { diaryList }
+                      </div>
+                      ) : (
+                        <p>Loading...</p>
+                      )}
+
+        </div>
                
       </>
     );

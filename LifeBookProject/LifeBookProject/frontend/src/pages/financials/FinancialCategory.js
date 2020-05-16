@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 import FinancialElement from './FinancialElement';
 
 class FinancialCategory extends Component{
@@ -17,10 +18,10 @@ class FinancialCategory extends Component{
   async componentDidMount() {
     const category = this.props.category;
 
-    const response = await fetch('http://localhost:8080/financial/category/' + category);
+    const response = await get('http://localhost:8080/financial/category/' + category);
     const body = await response.json();
 
-    const response2 = await fetch('http://localhost:8080/financial/costs/' + category.toUpperCase());
+    const response2 = await get('http://localhost:8080/financial/costs/' + category.toUpperCase());
     //const categoryCost = await response2.json();
     //console.log(categoryCost);
 
@@ -30,13 +31,7 @@ class FinancialCategory extends Component{
   }
 
   async remove(id) {
-    await fetch(`http://localhost:8080/financial/delete/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(() => {
+    await remove(`http://localhost:8080/financial/delete/${id}`).then(() => {
       let updatedFinancials = [...this.state.financials].filter(i => i.id !== id);
       this.setState({financials: updatedFinancials});
     });

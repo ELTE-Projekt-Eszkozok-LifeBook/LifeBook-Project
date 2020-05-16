@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import TodoCategory from './TodoCategory';
 import './Todo.css';
+import { emptyTodo } from '../../domain/EmptyElems';
+import { todoCategories } from '../../domain/Enums';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class TodoPage extends Component{
-
-  emptyItem = {
-    todoText: '',
-    checked: '',
-    important: '',
-    category: ''
-  };
 
   constructor(props){
     super(props);
@@ -17,14 +13,10 @@ class TodoPage extends Component{
         isLoading: true,
         todoLists: null
     };
-    this.categories = 
-      ["HOUSEHOLD", 
-      "SHOPPING", 
-      "SCHOOL", 
-      "UNIVERSITY", 
-      "SOMEDAY_STUFF"];
+    this.categories = todoCategories;
 
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.postTodo = this.postTodo.bind(this);
   }
 
   async componentDidMount() {
@@ -40,24 +32,15 @@ class TodoPage extends Component{
   }
 
 
-  async putTodo(){
-    console.log("elmentem");
-    let todo = this.emptyItem;
-    todo.todoText = document.getElementById("textInput").value;
+  async postTodo(){
+    let todo = emptyTodo;
+    todo.todoText = document.getElementById("toDoTextInput").value;
     todo.checked = false;
     todo.important = document.getElementById("important").value;
     todo.category = document.getElementById("categories").value;
 
-    console.log(todo);
-
-    await fetch(`http://localhost:8080/todo`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(todo)
-    }).then(() => {
+    await post(`http://localhost:8080/todo`, todo)
+    .then(() => {
       this.componentDidMount();
     });
   }
@@ -73,44 +56,44 @@ class TodoPage extends Component{
     return(
 	<>
 		<div>
-                    <div class="background-3">
-                        <div class="title">
+                    <div className="background-3">
+                        <div className="title">
                             <span> Don't forget to drink some water during your everyday routine.</span>
                         </div>
                     </div>
                     <div>
-                        <div class="upload">
+                        <div className="upload">
 								<h2>My To-do list</h2>
 								<p>Do you feel like you are not so good at time management? Always late for the meetings, because you forgot them again? Try to manage a to-do list, so you will never forget to water your plants, or go to a meeting.</p>
 								
 							<form>
-								<label class= "container" htmlFor='important'>Important
+                <label className= "container" htmlFor='important'>Important
 									<input type="checkbox" id="important" value='false'></input>
-									<span class="checkmark"></span>
+                  <span className="checkmark"></span>
 								</label>
 									<textarea id='toDoTextInput' name='text' placeholder="Write here what you have to do"></textarea>
-								<div class="categoryselect">
+								<div className="categoryselect">
 									<label htmlFor="categories">Choose category:</label>
-									<select class="select-css" id="categories" name="categories"> 
+									<select className="select-css" id="categories" name="categories"> 
 										{this.categories.map((value, index) => {
 										  return <option value={value} key={index}>{value.toUpperCase()}</option>
 										})}
 									</select>
 								</div>
-								<div class="submit">
-									<button class="submitbut" type="submit" onClick={() => this.putTodo()}>Save</button>
+								<div className="submit">
+									<button className="submitbut" type="submit" onClick={() => this.postTodo()}>Save</button>
 								</div>
 							</form>
                         </div>
                     </div>
                                     
-                    <div class="background-2">
-                        <div class="text">
+                    <div className="background-2">
+                        <div className="text">
                             <span>Memories</span>
                         </div>
                     </div>
                                     
-                    <div class="search">
+                    <div className="search">
                         <h2>Searching through your entries</h2>
                         <p>If you want to modify an entry or just reread it you can find it by its date.</p>
                         
@@ -119,7 +102,7 @@ class TodoPage extends Component{
                         <button onClick={() => this.searchDiary()}>Search</button>
                         <button onClick={() => this.diaryList }>Show all entries</button>
                     </div>
-					<div class="todolist"> { todoLists } </div>
+					<div className="todolist"> { todoLists } </div>
                 </div>
                
       </>      

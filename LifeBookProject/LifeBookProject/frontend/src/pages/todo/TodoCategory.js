@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoElement from './TodoElement';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class TodoCategory extends Component{
 
@@ -15,7 +16,7 @@ class TodoCategory extends Component{
 
   async componentDidMount() {
     const category = this.props.category;
-    const response = await fetch('http://localhost:8080/todo/category/' + category);
+    const response = await get('http://localhost:8080/todo/category/' + category);
     const body = await response.json();
     if(body){
       this.setState({ todos: body, isLoading: false });
@@ -23,13 +24,8 @@ class TodoCategory extends Component{
   }
 
   async remove(id) {
-    await fetch(`http://localhost:8080/todo/delete/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(() => {
+    await remove(`http://localhost:8080/todo/delete/${id}`)
+    .then(() => {
       let updatedTodos = [...this.state.todos].filter(i => i.id !== id);
       this.setState({todos: updatedTodos});
     });

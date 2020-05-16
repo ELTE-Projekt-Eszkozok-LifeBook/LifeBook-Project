@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import FinancialCategory from './FinancialCategory';
+import {emptyFinancial} from '../../domain/EmptyElems';
+import {financialCategories} from '../../domain/Enums';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class FinancialPage extends Component{
 
@@ -17,21 +20,13 @@ class FinancialPage extends Component{
         financialLists: null,
         costs: 0
     };
-    this.categories = [    
-        "HOUSEHOLD",
-        "FOOD",
-        "UTILITIES",
-        "TAX",
-        "LOAN",
-        "CLOTHES",
-        "OTHER",
-        "INCOME" ]
+    this.categories = financialCategories;
     this.componentDidMount = this.componentDidMount.bind(this);
     this.postData = this.postData.bind(this);
   }
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:8080/financial/costs');
+    const response = await get('http://localhost:8080/financial/costs');
     const body = await response.json();
     console.log(body);
 
@@ -54,20 +49,13 @@ class FinancialPage extends Component{
 
   async postData(){
     let d = new Date();
-    let data = this.emptyItem;
+    let data = emptyFinancial;
     data.amount = document.getElementById("amountInput").value;
     data.date = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
     data.description = document.getElementById("descriptionInput").value;
     data.category = document.getElementById("categoriesInput").value;
 
-    await fetch(`http://localhost:8080/financial`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body:  JSON.stringify(data)
-    }).then(() => {
+    await post(`http://localhost:8080/financial`, data).then(() => {
       this.componentDidMount();
     });
   }
