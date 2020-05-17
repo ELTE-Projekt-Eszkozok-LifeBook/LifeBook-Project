@@ -44,13 +44,13 @@ public class SportActivityEntityTest {
     
     @Test
     void foundSpecificSportByNameInSportActivityRepository(){
-        SportActivity sport = sportActivityRepo.getByName("basketball");
+        SportActivity sport = sportActivityRepo.getByName("Basketball");
         assertThat(sport).isNotNull();
         
-        sport = sportActivityRepo.getByName("running");
+        sport = sportActivityRepo.getByName("Running");
         assertThat(sport).isNotNull();
         
-        sport = sportActivityRepo.getByName("handball");
+        sport = sportActivityRepo.getByName("Handball");
         assertThat(sport).isNull();
     }
     
@@ -97,16 +97,16 @@ public class SportActivityEntityTest {
     
     @Test
     void whenDeleted_notFoundByNameInSportActivityRepository(){
-        sportActivityRepo.delete(sportActivityRepo.getByName("basketball"));
-        assertThat(sportActivityRepo.getByName("basketball")).isNull();
+        sportActivityRepo.delete(sportActivityRepo.getByName("Basketball"));
+        assertThat(sportActivityRepo.getByName("Basketball")).isNull();
         Iterable<SportActivity> sports = sportActivityRepo.findAll();
         assertThat(sports).hasSize(3);
     }
     
     @Test
     void whenUpdated_changesOccuredAlsoInSportActivityRepository(){
-        SportActivity sport = sportActivityRepo.findById(sportActivityRepo.getByName("running").getId()).get();
-        SportActivity newActivity = new SportActivity("running", "DAILY", 1.5, Date.valueOf("2018-01-05"), false);
+        SportActivity sport = sportActivityRepo.findById(sportActivityRepo.getByName("Running").getId()).get();
+        SportActivity newActivity = new SportActivity("Running", "DAILY", 1.5, Date.valueOf("2018-01-05"), false);
         sport.setRegularity(newActivity.getRegularity());
         sport.setDuration(newActivity.getDuration());
         sport.setStartTime(newActivity.getStartTime());
