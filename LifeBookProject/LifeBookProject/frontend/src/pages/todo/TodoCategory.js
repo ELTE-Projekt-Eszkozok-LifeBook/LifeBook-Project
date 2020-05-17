@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TodoElement from './TodoElement';
 import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import './TodoCategory.css'
 
 class TodoCategory extends Component{
 
@@ -49,10 +50,10 @@ class TodoCategory extends Component{
     return(
       <>
         {(todoList.length !== 0) ? (
-        <>
-          <h3>{this.props.category}</h3>
+        <div className="todoList">
+          <h3 className="todoName">{this.props.category}</h3>
           <div> { todoList } </div>
-        </>
+        </div>
         ) : null}
       </>
     );

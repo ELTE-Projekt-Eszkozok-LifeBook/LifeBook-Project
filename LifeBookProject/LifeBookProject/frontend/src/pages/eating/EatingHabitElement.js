@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './EatingHabitElement.css';
 
 class EatingHabitElement extends Component{
 
@@ -8,19 +9,17 @@ class EatingHabitElement extends Component{
 
     render() {
         const eatingHabit = this.props.eatingHabit;
-        console.log(eatingHabit);
 
         return(
-            <div key={ eatingHabit.name }>
-                <h4>{eatingHabit.name}</h4>
+            <div className="elementEating" key={ eatingHabit.name }>
+                <h3 className="eatingName">{eatingHabit.name}</h3>
+                <p>Type: {eatingHabit.type}</p>
 
-                <p>{eatingHabit.type}</p>
+                {(eatingHabit.isFood === true) ? 
+                (<div></div>) : (<div></div>)}
 
-                {(eatingHabit.isOfficial === true) ? 
-                (<p>Food</p>) : (<p>Drink or something else</p>)}
-
-                <p>{eatingHabit.frequency}</p>
-                <p>{eatingHabit.portion}</p>
+        <p>Frequency: {eatingHabit.frequency}</p>
+        <p>Portion: {eatingHabit.portion}</p>
 
                 <button onClick={() => this.props.onDeleteTodo(eatingHabit.name)}>&#10008;</button>
 

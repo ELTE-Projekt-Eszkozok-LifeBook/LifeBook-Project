@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './SportElement.css';
 
 class SportElement extends Component{
 
@@ -8,18 +9,16 @@ class SportElement extends Component{
 
     render() {
         const sport = this.props.sport;
-        console.log(sport);
 
         return(
-            <div key={ sport.name }>
-                <h4>{sport.name}</h4>
+            <div className="elementSport" key={ sport.name }>
+                <h3 className="sportName">{sport.name}</h3>
 
-                <p>{sport.regularity}</p>
-                <p>{sport.duration}</p>
-                <p>{sport.startTime}</p>
+                <p>{sport.duration} hours {sport.regularity}</p>
+                <p>Started: {sport.startTime}</p>
 
                 {(sport.isOfficial === true) ? 
-                (<p>Official</p>) : (<p>Not official</p>)}
+                (<p>Doing officially</p>) : (<p>Doing by myself</p>)}
 
                 <button onClick={() => this.props.onDeleteSport(sport.name)}>&#10008;</button>
 

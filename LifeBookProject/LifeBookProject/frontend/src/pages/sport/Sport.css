@@ -58,11 +58,11 @@ body, html{
 }
 
 .sportFormTitle{
-	text-align: center;
+    text-align: center;
+    padding: 20px 50px;
 }
 
 input[type=text] {
-	width: 98%;
 	font-size: 18px;
 	margin: 8px 8px;
 	box-sizing: border-box;
@@ -77,7 +77,7 @@ input[type=text] {
 	width: 75%;
 	max-width: 75%;
 	box-sizing: border-box;
-	margin: 0;
+	margin: 10px;
 	border: 1px solid #aaa;
 	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
 	border-radius: .5em;
@@ -159,7 +159,6 @@ input[type=text] {
   transform: rotate(45deg);
 }
 .submitbut {
-	width: 100%;
 	font-size: 18px;
 }
 button{
@@ -174,4 +173,8 @@ button{
 button:hover{
     background-color: #cccccc;
     color: #000000;
+}
+
+.sportList{
+    background-color: #000000;
 }

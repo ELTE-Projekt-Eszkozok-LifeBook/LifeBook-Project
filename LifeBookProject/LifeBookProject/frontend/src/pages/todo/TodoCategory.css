@@ -1,0 +1,19 @@
+@import 'https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap';
+
+.allFinancial{
+    background-color: #000000;
+}
+.todoList{
+    background-color: #000000;
+    padding: 20px 50px;
+    background-image: url('./notes.jpg');
+    text-align: left;
+    opacity: 0.9;
+    color: #ffffff;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+.todoName{
+    text-align: left;
+}

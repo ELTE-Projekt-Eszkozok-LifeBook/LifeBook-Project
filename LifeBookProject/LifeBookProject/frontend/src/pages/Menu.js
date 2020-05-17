@@ -10,7 +10,7 @@ class Menu extends Component{
             <div className ="menu">
                     <NavLink exact to="/diary">My Diary</NavLink>
                     <NavLink exact to="/todos">ToDo's</NavLink>
-                    <NavLink exact to="/timetable">Timetable</NavLink>
+                    
                     <NavLink exact to="/sport">Sport</NavLink>
                     <NavLink exact to="/eating">Eating</NavLink>
                     <NavLink exact to="/financials">Money</NavLink>

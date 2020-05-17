@@ -14,14 +14,14 @@
         "DAILY", 
         "WEAKLY", 
         "MONTHLY", 
-        "EVERY_YEAR"
+        "EVERY YEAR"
     ]
 
   export const sportRegularity = [
         "DAILY", 
         "WEAKLY", 
         "MONTHLY", 
-        "EVERY_YEAR"
+        "EVERY YEAR"
     ]
 
   export const todoCategories = [
@@ -29,6 +29,6 @@
         "SHOPPING", 
         "SCHOOL", 
         "UNIVERSITY", 
-        "SOMEDAY_STUFF"
+        "SOMEDAY STUFF"
     ];
 

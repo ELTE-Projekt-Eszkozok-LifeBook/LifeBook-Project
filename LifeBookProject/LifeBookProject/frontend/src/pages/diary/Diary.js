@@ -50,10 +50,16 @@ class Diary extends Component{
 
 
   async listDiaries(){
-    const response = await get('http://localhost:8080/diary');
-    const body = await response.json();
-    if(body){
-      this.setState({ diaries: body, isLoading: false });
+    const form = document.getElementById("showHide").style;
+    if(form.display == "block"){
+        form.display = "none";
+    } else {
+        const response = await get('http://localhost:8080/diary');
+        const body = await response.json();
+        if(body){
+          this.setState({ diaries: body, isLoading: false });
+        }
+        form.display = "block";
     }
   }
 
@@ -70,14 +76,13 @@ class Diary extends Component{
             diary = { diary }>
         </DiaryElement>
     ))
-
-
+    
     return(
       <>
 		    <div>
                     <div className="background-1">
                         <div className="title">
-                            <span>Your thoughts are the most important thing in yor life... Precise them!</span>
+                            <span>Your thoughts are the most important thing in your life... Precise them!</span>
                         </div>
                     </div>
                     <div>
@@ -88,16 +93,13 @@ class Diary extends Component{
                                 that can help organize your feelings and experiences. Feel free to give it a try.<br></br> We promise you won't regret it ;D</p>
                             
                         <form>
-                            <textarea id='textInput' name='text' placeholder="Write your day..."></textarea>
-                            <div className="right-side">
-                            <label htmlFor="mood"></label>
-                            <input type='text' id='moodInput' name='mood' placeholder="How are you feeling..."></input><br></br>
-                            <label htmlFor="image"></label>
-                            <input type='text' id='imgInput' name='image' placeholder="Add picture by url..."></input><br></br>
-                            <label htmlFor="video"></label>
-                            <input type='text' id='videoInput' name='video' placeholder="Add video by url..."></input><br></br>
-                            <button type="submit" onClick={() => this.postDiary()}>Save</button>
-                            </div>
+                            <textarea id='textInput' name='text' placeholder="Write your day!"></textarea>
+                           
+                            <input type='text' id='moodInput' name='mood' placeholder="How are you feeling?"></input><br></br>
+                            <input type='text' id='imgInput' name='image' placeholder="Add picture by url"></input><br></br>
+                            <input type='text' id='videoInput' name='video' placeholder="Add video by url"></input><br></br>
+                            <button className="diaryBut" type="submit" onClick={() => this.postDiary()}>Save</button>
+                            
                         </form>
                         </div>
                     </div>
@@ -112,19 +114,21 @@ class Diary extends Component{
                         <h2>Searching through your entries</h2>
                         <p>If you want to modify an entry or just reread it you can find it by its date.</p>
                         
-                        <input type='text' id='dateInput' placeholder="Search..."></input><br></br>
+                        <input type='text' id='dateInput' placeholder="E.g.: 2020-05-10"></input><br></br>
                         
                         <button onClick={() => this.searchDiary()}>Search</button>
                         <button onClick={() => this.listDiaries()}>Show all entries</button>
+                    
                     </div>
-
+                    
                      {(!this.isLoading) ? (
-                      <div>
+                      <div id={"showHide"}>
                         { diaryList }
                       </div>
                       ) : (
                         <p>Loading...</p>
                       )}
+                     
 
         </div>
                

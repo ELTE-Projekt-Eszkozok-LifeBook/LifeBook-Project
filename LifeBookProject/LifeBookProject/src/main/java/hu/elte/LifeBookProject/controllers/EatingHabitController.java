@@ -28,7 +28,8 @@ public class EatingHabitController {
     //összes étkezési szokás lekérése
     @GetMapping("")
     public ResponseEntity<Iterable<EatingHabit>> getAll() {
-        return new ResponseEntity(eatingHabitRepo.findAll(), HttpStatus.OK);
+        List<EatingHabit> eatingHabits = eatingHabitRepo.findAllEatings();
+        return new ResponseEntity(eatingHabits, HttpStatus.OK);
     }
     
     //étkezési szokások lekérése típus alapján

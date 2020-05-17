@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EatingHabitRepository extends CrudRepository<EatingHabit, Long> {
 
+    @Query("SELECT e FROM EatingHabit e ORDER BY e.name ASC ")
+    List<EatingHabit> findAllEatings();
+    
     @Query("SELECT e FROM EatingHabit e WHERE e.type = ?1 ORDER BY e.name ASC")
     List<EatingHabit> getByType(String type);
 

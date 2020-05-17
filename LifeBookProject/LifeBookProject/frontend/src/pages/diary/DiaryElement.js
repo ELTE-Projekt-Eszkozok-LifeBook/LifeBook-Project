@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {emptyDiary} from '../../domain/EmptyElems';
 import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import './DiaryElement.css';
 
 class DiaryElement extends Component{
 
@@ -24,11 +25,11 @@ class DiaryElement extends Component{
     }
 
     async modifyDiaryButton(id){
-        const form = document.getElementById("modifyForm");
-        if(form.style.display == "none"){
-            form.style.display = "block";
+        const form = document.getElementById(id + "modifyForm").style;
+        if(form.display == "block"){
+            form.display = "none";
         } else {
-            form.style.display = "none";
+            form.display = "block";
         }
     }
 
@@ -47,16 +48,20 @@ class DiaryElement extends Component{
           this.props.diary = diary;
         });
         
-        const form = document.getElementById("modifyForm");
-        form.style.display = "none";
+        const form = document.getElementById(id + "modifyForm").style;
+        form.display = "none";
     }
-
-
+    
+    
     render() {
         const diary = this.props.diary;
 
         return(
-            <div key={ diary.id }>
+            
+            <div className="elementEntryList" key={ diary.id }>
+                <label className="dateLabel">Date: {diary.date}</label>
+                <div className="elementEntry">
+                
                 <p>{diary.text}</p>
 
                 {diary.image ? (
@@ -71,23 +76,20 @@ class DiaryElement extends Component{
                 </video>) : null}
 
                 <div>
-                    <p>{diary.currentMood}</p>
-                    <p>{diary.date}</p>
+                    <p>My mood was {diary.currentMood}</p>
+                </div>
                 </div>
 
-                <button onClick={() => this.modifyDiaryButton()}>Modify</button>
-
-                <form id={diary.id + "modifyForm"}>
-                    <textarea id={diary.id + 'textInput'} name='text' data-state="textValue" value={this.state.textValue} onChange={e => this.handleChange(e.target)}></textarea>
-                    <div className="right-side">
-                    <label htmlFor="mood">Mood</label>
-                    <input type='text' id={diary.id +'moodInput'} name='mood' data-state="moodValue" value={this.state.moodValue} onChange={e => this.handleChange(e.target)}></input><br></br>
-                    <label htmlFor="image">Image</label>
-                    <input type='text' id={diary.id + 'imgInput'} name='image' data-state="imgValue" value={this.state.imgValue} onChange={e => this.handleChange(e.target)}></input><br></br>
-                    <label htmlFor="video">Video</label>
-                    <input type='text' id={diary.id + 'videoInput'} name='video' data-state="videoValue" value={diary.video} onChange={e => this.handleChange(e.target)}></input><br></br>
-                    <button type="submit" onClick={() => this. modifyDiary(diary.id)}>Save</button>
-                    </div>
+                <button className="modifyBut" onClick={() => this.modifyDiaryButton(diary.id)}>Modify</button>
+                
+                <form className="elementForm" id={diary.id + "modifyForm"}>
+                    <textarea className="elementTextInput" id={diary.id + 'textInput'} name='text' data-state="textValue" value={this.state.textValue} placeholder="Write your day!" onChange={e => this.handleChange(e.target)}></textarea>
+                   
+                    <input className="elementMoodInput" type='text' id={diary.id +'moodInput'} name='mood' data-state="moodValue" value={this.state.moodValue} placeholder="How are you feeling?" onChange={e => this.handleChange(e.target)}></input><br></br>
+                    <input className="elementImgInput" type='text' id={diary.id + 'imgInput'} name='image' data-state="imgValue" value={this.state.imgValue} placeholder="Add image by url" onChange={e => this.handleChange(e.target)}></input><br></br>
+                    <input className="elementVideoInput" type='text' id={diary.id + 'videoInput'} name='video' data-state="videoValue" value={diary.video} placeholder="Add video by url" onChange={e => this.handleChange(e.target)}></input><br></br>
+                    <button className="elementBut" type="submit" onClick={() => this. modifyDiary(diary.id)}>Save</button>
+                    
                 </form>
 
             </div>

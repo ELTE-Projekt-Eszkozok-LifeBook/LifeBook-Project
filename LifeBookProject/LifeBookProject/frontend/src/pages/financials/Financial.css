@@ -57,6 +57,7 @@ body, gtml{
 
 .financialFormTitle{
 	text-align: center;
+        padding: 20px 50px;
 }
 
 .select-css-money {
@@ -67,7 +68,7 @@ body, gtml{
 	width: 75%;
 	max-width: 75%;
 	box-sizing: border-box;
-	margin: 0;
+	margin-left: 10px;
 	border: 1px solid #aaa;
 	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
 	border-radius: .5em;
@@ -92,4 +93,9 @@ body, gtml{
 }
 .select-css-money option {
 	font-weight:normal;
+}
+
+.financials{
+    background-color: #000000;
+    margin-bottom: 15px;
 }

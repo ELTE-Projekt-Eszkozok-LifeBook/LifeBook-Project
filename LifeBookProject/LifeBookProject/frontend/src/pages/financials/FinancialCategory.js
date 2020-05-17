@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 import FinancialElement from './FinancialElement';
+import './FinancialCategory.css';
 
 class FinancialCategory extends Component{
 
@@ -54,21 +55,21 @@ class FinancialCategory extends Component{
     ))
 
     return(
-      <>
-        {(financialList.length !== 0) ? (
-        <>
-          <h3>{this.props.category}</h3>
-          <div> { financialList } </div>
-
-          <div id="stats">
+        <div>{(financialList.length !== 0) ? (
+        <div className="allFinancial">
+          <div className="elementFinancial">
+          <h3 className="financialName">{this.props.category}</h3>
+          <div className="infos"> { financialList } </div>
+        </div>
+        
+          <div className="percent" id="stats">
             <p>Category costs:</p>
             <p>{this.categoryCost}</p>
             <p>{this.categoryCost / this.props.costs} %</p>
           </div>
-
-        </>
-        ) : null}
-      </>
+          
+        </div>
+        ) : null}</div>
     );
 
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './FinancialElement.css';
 
 class FinancialElement extends Component{
 
@@ -11,7 +12,7 @@ class FinancialElement extends Component{
         console.log(stat);
 
         return(
-            <div key={ "stat" + toString(stat.id) }>
+            <div clasName="infos" key={ "stat" + toString(stat.id) }>
 
                 <p>{stat.date}</p>
                 <p>{stat.amount}</p>
