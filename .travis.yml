@@ -27,6 +27,8 @@ deploy:
     api-key:
         secure: $HEROKU_API_KEY
     app: lifebook-project
+    on:
+        branch: master
 
 branches:
     only:
