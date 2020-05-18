@@ -23,11 +23,12 @@ after_success:
     - cd LifeBookProject/LifeBookProject
 
 deploy:
-    provider: heroku
-    skip-cleanup: true
-    api-key:
-        secure: F/aMjLQSMUIEKlsmX1sF2t48lJMPN1DGUtec9worrbVcFymN6mxCGFy9YNemB55YiFXRX1dHNIzFeKyUmR+ra9GqZ1bXqMmfPCPcVw0vgNPTTrdK0B/iw2isJCGd2C0NwZuL9rgOKP2BoPCSR2mSmlkesDEuDThWPWS75NNzVlqom9EmXe981f1wjo36zrCYXfjE5z/ZmzHKUq0hnUp4woVqPyiAzs2yH8j8CWDq20As2xOUnxr+THbw15OUN9ujdN/7k1ovaLKir0H+nx193D+Vk/QNwBhIET70BajdNsirpclrYe7Z4zMlhIRahieoo1mrJY+I72yNDYlb2/nbfCc1bSJldt55QLkD8trDK+EwNHJ8+LzGsWZqzDiDeEICba0WQT0mIUUndReDbWTS/TgjXlo6jBq4DmPYOTZA87fPtvgbGEcZf9cLLC3eabonaxdgFDkEnLrEAlxeIYGKRolFpiGLNX/SxrgsrTbun++I8e2sxIebrdQIOaAspUhPHtYix97KpF9jquPkEJqxxhEeUdfl7OH/eG2wB+HVwhuB/8dOwaksqLsKQq1g23dR9M0H0oIiAv5SwyVHIVZ2vgFcBitnFQ1ych5lW9ta87vgrbNFW5ZKCsHpTjJHpjookSRSh/DNgUcSQCqhOZXnXAFVK6e7ZcRM1sdWH9+44WU=
-    app: lifebook-project
+  provider: heroku
+  api_key:
+    secure: PYZGvnkGLQEOfbCDa+kXRct3epcWQi8bk55te9A3fEa2nfak+K1FS0gAcxUEdM4o9JarFUZ+sFgXzkFFT7f0P4QTnQX0hn35olbf2O75GifQjXzEhHnhMqFWqcqwlfgSnh//FTZdVnozeCIjHsAYmNBbnYXcfby86tVLUjXE/JkXnsbj+txxS8h/CoDu3NFXaaiWdc149B+GP+HoIHWshXrDB7bCyO6bJUDsUCXBtR316j/n43UTf5jEy6+9rFx4daMyuidS+LH5CmaItupJLMtPfW6odHvxzdObvWKyEGoSmDVzAB6Vh6zDq3oI3FEfXYBHy+301gh9WqjGtvuVMS0agdbvYqMsvY975REz9NzaHYWz8hShAHj0LdcXXsB2G72F1zNLlN+GCE1ywD2nLv8lxp9lxTYWUROUHDIxH2OlFfP6ZLy9MlT7s8ZRBh1nMRL8RUdM7lW9hWw1aXLZJ4oIua8ymBEpQXCVDGGsAicuHC3kgLBzeHHFm3Y3fAHiRvTtDcI+ulTaPA0dAZ56FzXSkz6Qg4zajqNjZAj+uTLlQ7Nogp+dD7LTBMm8ttxIcOfcK80MXbVaca75Eht/84NyURVZNESDgWajs/dRaUEbkySzswicCxhPF1mNn9YlhQtmCYYVbdaaMMyZf1toJAM1xPWI29yd0gnXEoD3XMg=
+  app: lifebook-project
+  on:
+    repo: ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project
 
 branches:
     only:
