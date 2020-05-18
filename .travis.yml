@@ -24,6 +24,7 @@ after_success:
 
 deploy:
     provider: heroku
+    skip-cleanup: true
     api-key:
         secure: e88a962a-c54b-4137-8a50-084d339ebf83
     app: lifebook-project
