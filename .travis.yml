@@ -1,39 +1,33 @@
 language: java
 jdk: oraclejdk15
 os: linux
-
 env:
   global:
   - secure: BxmJN35YMrLYaJCQj86Sq5emDIV5G1F1tn/Ec1XVrwWLNXzXt3a/eFAFwFsalNEC1f1vj2ut3xpXUUgDguwmXBXDAvlR5C6ZGMRk84DeO9HaCKoVdrmaqFNB+YfFLiTTU4V7UXsEWjEOZbSy7K06pLJ3AcRPtPgh2tmay66HKQUwHgTH/JK7vQ45lwt2hdOrpXYM7S6cmHOwFk8KBLHnDSpbtmkvLzAxhoXjf0iQlR3wCWyMHwroVAy7gK6DScqJzbCKGH1X2kEmwTHw2BDQKJoVDB1e+zsBij3PIHXDlgre41WUT6PYosfMftt4ivVSuGpWq/LW2dc6bIXpxt5r5OtnRb+8vusnzFVac0GkEjOZSJD7MUhGdRrHdHT4VGpMtlLIdviryeLMF1pKWU8Zc76VZYfrL0ik1JbWV4tb41kLZeNOj2bp3EPUeJ5J3g4iHchsGPKCXjn7C16qp8nJKKuFvm8yRyW1W4hEv6k6DcwJ8ajdnZavjSeIhIgW2vhX2svkKj3rVzKZ6lHbdbAgAht4qS71i8HpAzfzwbVyJP+e7yyhF8wsdW9T7AoROcxl2Iv2Ekowlc+t9oOH7uu7ir3IWPrKWvjTjqdwSpmktg2VHw4lTS6dMh/L6kT7/a1DhpYZKnWQst/n72D34rGH/MbdlV6bDCzKlK3uAMjcbmM=
-
 script:
-    - cd LifeBookProject/LifeBookProject
-    - echo "Maven dependencies"
-    - mvn install -DskipTests
-    - echo "Unit tests"
-    - mvn test
-
+- cd LifeBookProject/LifeBookProject
+- echo "Maven dependencies"
+- mvn install -DskipTests
+- echo "Unit tests"
+- mvn test
 after_success:
-    - mvn checkstyle:check
-    - mvn javadoc:javadoc
-    - cd ..
-    - cd ..
-    - ls
-    - bash push-javadoc-to-gh-pages.sh
-    - cd LifeBookProject/LifeBookProject
-
+- mvn checkstyle:check
+- mvn javadoc:javadoc
+- cd ..
+- cd ..
+- ls
+- bash push-javadoc-to-gh-pages.sh
+- cd LifeBookProject/LifeBookProject
 deploy:
   provider: heroku
   api_key:
-    secure: PYZGvnkGLQEOfbCDa+kXRct3epcWQi8bk55te9A3fEa2nfak+K1FS0gAcxUEdM4o9JarFUZ+sFgXzkFFT7f0P4QTnQX0hn35olbf2O75GifQjXzEhHnhMqFWqcqwlfgSnh//FTZdVnozeCIjHsAYmNBbnYXcfby86tVLUjXE/JkXnsbj+txxS8h/CoDu3NFXaaiWdc149B+GP+HoIHWshXrDB7bCyO6bJUDsUCXBtR316j/n43UTf5jEy6+9rFx4daMyuidS+LH5CmaItupJLMtPfW6odHvxzdObvWKyEGoSmDVzAB6Vh6zDq3oI3FEfXYBHy+301gh9WqjGtvuVMS0agdbvYqMsvY975REz9NzaHYWz8hShAHj0LdcXXsB2G72F1zNLlN+GCE1ywD2nLv8lxp9lxTYWUROUHDIxH2OlFfP6ZLy9MlT7s8ZRBh1nMRL8RUdM7lW9hWw1aXLZJ4oIua8ymBEpQXCVDGGsAicuHC3kgLBzeHHFm3Y3fAHiRvTtDcI+ulTaPA0dAZ56FzXSkz6Qg4zajqNjZAj+uTLlQ7Nogp+dD7LTBMm8ttxIcOfcK80MXbVaca75Eht/84NyURVZNESDgWajs/dRaUEbkySzswicCxhPF1mNn9YlhQtmCYYVbdaaMMyZf1toJAM1xPWI29yd0gnXEoD3XMg=
-  app: LifeBook-Project
+    secure: YNa6NE5ctZuHfToqyueFBER4AZCcarAnADVGdjBbxyD0vx1C7LjEa9WRTUrCXnWznlX9PzYOU6oXb3o/0B1qsWGDJ21gDm22dtTbd9Dwku3B0FLbdXuE3nMaHf8UNqhcPxK0yo8m9K7r5atooMG1nGSONi6GRDzsiOsigEvDs/Kr3T4pEEcHa9FG6nzsEcoAvjv3MGDkPGFJrGIw/N72+NmIZmvIa4t/ES3RTHrL5XSNgzFF40t9Act5Vz+IBbu/6e/8wiIHiokbiJN+Yg4GZ2UnCaXTqhGT1vsFGi64nIJTidUcvmndZbFfpqRSUwDKh6IMlXcJF/g9CMMm8mVY4JXclCrYWM/aYZtvvvsG/P1+svUxPFkgxABlSAxk0VNwOBP5y8+NdaueA3p1KFkjb4APEurTnQwBIUzd4tBDTTRj+5KPyWGZcwa/sb9uSXQfx4a5cW4ocJnhHDSToKTr7dPD9RYalW5Ie50I9UOw5NHnCuuk6uov9/4B3UegZ8VkJFdMzmcOs9iFCNGE+Z6iEV6jiYFeio/FqQbCZbc120NbNY8olmur84AysMeWBMPJZ6x7tHouUp3Y8P7VYOTMTE/UFZb0THEeyC/4GskCCZfwNGm8fjNzCt0gCQfkk5pc33CMzP3w1ws+SQIGyCO/oL3751HLcdA2if5c4gOZkck=
+  app: lifebookproject
   on:
     repo: ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project
-
 branches:
-    only:
-    - master
-
+  only:
+  - master
 cache:
   directories:
-  - $HOME/.m2
+  - "$HOME/.m2"
