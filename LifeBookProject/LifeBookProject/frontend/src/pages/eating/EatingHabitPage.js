@@ -7,25 +7,27 @@ import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class EatingHabitPage extends Component{
 
-constructor(props){
-super(props);
+    constructor(props){
+        super(props);
         this.state = {
-        isLoading: true,
-                eatingHabits: []
+            isLoading: true,
+            eatingHabits: []
         };
         this.frequency = eatingFrequency;
         this.componentDidMount = this.componentDidMount.bind(this);
         this.postEatingHabit = this.postEatingHabit.bind(this);
         this.remove = this.remove.bind(this);
-}
+    }
 
-async componentDidMount() {
+    async componentDidMount() {
+        const response = await get('http://localhost:8080/eatinghabits');
+        const body = await response.json();
+        if(body){
+          this.setState({ eatingHabits: body, isLoading: false });
+        }
+    }
 
-this.setState({ isLoading: false });
-}
-
-async postEatingHabit(){
-let d = new Date();
+    async postEatingHabit(){
         let eatingHabit = emptyEatingHabit;
         eatingHabit.name = document.getElementById("nameInput").value;
         eatingHabit.type = document.getElementById("typeInput").value.toLowerCase();
@@ -34,29 +36,29 @@ let d = new Date();
         eatingHabit.portion = document.getElementById("portionInput").value;
         await post(`http://localhost:8080/eatinghabits`, eatingHabit)
         .then(() => {
-        this.componentDidMount();
+            this.componentDidMount();
         });
-}
+    }
 
-async remove(name) {
-await remove(`http://localhost:8080/eatinghabits/delete/${name}`)
+    async remove(name) {
+        await remove(`http://localhost:8080/eatinghabits/delete/${name}`)
         .then(() => {
         let updatedEatingHabits = [...this.state.eatingHabits].filter(i => i.name !== name);
                 this.setState({eatingHabits: updatedEatingHabits});
         });
-}
+    }
 
 
-async searchEatingHabit(){
-    const type = document.getElementById('searchInput').value;
-    if (type){
-        const response = await get('http://localhost:8080/eatinghabits/type/' + type);
-        const body = await response.json();
-        if (body){
-            this.setState({ eatingHabits: body, isLoading: false });
+    async searchEatingHabit(){
+        const type = document.getElementById('searchInput').value;
+        if (type){
+            const response = await get('http://localhost:8080/eatinghabits/type/' + type);
+            const body = await response.json();
+            if (body){
+                this.setState({ eatingHabits: body, isLoading: false });
+            }
         }
     }
-}
 
 async listEatingHabits(){
     const response = await get('http://localhost:8080/eatinghabits');
@@ -68,17 +70,18 @@ async listEatingHabits(){
 
 
 render() {
-const {eatingHabits, isLoading} = this.state;
-        if (isLoading) {
-return <p>Loading...</p>;
-}
+    const {eatingHabits, isLoading} = this.state;
+        
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
 
-const eatingHabitList = eatingHabits.map(eatingHabit => (
+    const eatingHabitList = eatingHabits.map(eatingHabit => (
         <EatingHabitElement
-    eatingHabit = { eatingHabit }
-    onDeleteTodo = {this.remove}>
-</EatingHabitElement>
-        ));
+            eatingHabit = { eatingHabit }
+            onDeleteTodo = {this.remove}>
+        </EatingHabitElement>
+    ));
 
         return(
                 <>
@@ -110,7 +113,7 @@ const eatingHabitList = eatingHabits.map(eatingHabit => (
                             </div>
                             <input type='text' id='typeInput' name='type' placeholder="Food type"></input>
                             <input type='text' id='portionInput' name='portion' placeholder="Portion"></input>
-                            <button className="eatingBut" type="submit" onClick={() => this.postEatingHabit()}>Save</button>
+                            <button className="eatingBut" onClick={() => this.postEatingHabit()}>Save</button>
                         </form>
                     </div>
                     </div>
@@ -129,8 +132,11 @@ const eatingHabitList = eatingHabits.map(eatingHabit => (
                     
                     </div>
                     
-                     {(!this.isLoading) ? (
-                        <div className="eatingHabitList"> { eatingHabitList } </div>
+                      {(!this.isLoading) ? (
+                        (eatingHabitList.length == 0) ? (
+                            <p>There are no recorded foods.</p>
+                        ) : (
+                            <div className="eatingHabitList"> { eatingHabitList } </div>)
                       ) : (
                         <p>Loading...</p>
                       )}

@@ -1,73 +1,70 @@
-import React, { Component }
-from 'react';
+import React, { Component } from 'react';
 import SportElement from './SportElement';
-import {emptySport}
-from '../../domain/EmptyElems'
+import {emptySport} from '../../domain/EmptyElems'
 import './Sport.css';
-import {get, modify, post, remove}
-from '../../utilities/HTTPRequests';
-import { sportRegularity }
-from '../../domain/Enums';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import { sportRegularity } from '../../domain/Enums';
 
 
 class SportPage extends Component{
 
-constructor(props){
-super(props);
+
+    constructor(props){
+        super(props);
         this.state = {
-        isLoading: true,
-                sports: []
+            isLoading: true,
+            sports: []
         };
         this.regularity = sportRegularity;
         this.postSport = this.postSport.bind(this);
         this.remove = this.remove.bind(this);
-}
-
-async componentDidMount() {
-const response = await get('http://localhost:8080/sportactivity');
+      }
+    
+      async componentDidMount() {
+        const response = await get('http://localhost:8080/sportactivity');
         const body = await response.json();
         console.log(body);
-        if (body){
-this.setState({ sports: body, isLoading: false });
-}
-}
-
-async postSport(){
-let d = new Date();
+        if(body){
+          this.setState({ sports: body, isLoading: false });
+        }
+      }
+    
+      async postSport(){
         let sport = emptySport;
         sport.name = document.getElementById("nameInput").value;
         sport.regularity = document.getElementById("regularity").value;
         sport.duration = document.getElementById("durationInput").value;
         sport.startTime = document.getElementById("startInput").value;
         sport.isOfficial = document.getElementById("isOfficial").value;
+    
         await post(`http://localhost:8080/sportactivity`, sport)
         .then(() => {
-        this.componentDidMount();
+          this.componentDidMount();
         });
-}
-
-async remove(name) {
-await remove(`http://localhost:8080/sportactivity/delete/${name}`)
+      }
+    
+      async remove(name) {
+        await remove(`http://localhost:8080/sportactivity/delete/${name}`)
         .then(() => {
-        let updatedSports = [...this.state.sports].filter(i => i.name !== name);
-                this.setState({sports: updatedSports});
+          let updatedSports = [...this.state.sports].filter(i => i.name !== name);
+          this.setState({sports: updatedSports});
         });
-}
-
-
-render() {
-const {sports, isLoading} = this.state;
+      }
+    
+    
+      render() {
+        const {sports, isLoading} = this.state;
+    
         if (isLoading) {
-return <p>Loading...</p>;
-}
-
-const sportList = sports.map(sport => (
-        <SportElement
-    sport = { sport }
-    onDeleteSport = {this.remove}>
-</SportElement>
+          return <p>Loading...</p>;
+        }
+    
+        const sportList = sports.map(sport => (
+          <SportElement
+              sport = { sport }
+              onDeleteSport = {this.remove}>
+          </SportElement>
         ))
-
 
         return(
                 <>
@@ -104,7 +101,7 @@ const sportList = sports.map(sport => (
                         </select>
                     </div>
                     <div className="submit">
-                        <button className = "submitbut" type="submit" onClick={() => this.postSport()}>Save</button>
+                        <button className = "submitbut" onClick={() => this.postSport()}>Save</button>
                     </div>
                 </form>
                 </div>
@@ -117,7 +114,7 @@ const sportList = sports.map(sport => (
                 <div className="sportList" >{ sportList }</div>
                 </>
                 );
-}
+    }
 
 }
 

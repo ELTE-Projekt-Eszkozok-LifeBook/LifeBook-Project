@@ -1,60 +1,61 @@
-import React, { Component }
-from 'react';
+import React, { Component } from 'react';
 import TodoCategory from './TodoCategory';
 import './Todo.css';
-import { emptyTodo }
-from '../../domain/EmptyElems';
-import { todoCategories }
-from '../../domain/Enums';
-import {get, modify, post, remove}
-from '../../utilities/HTTPRequests';
+import { emptyTodo } from '../../domain/EmptyElems';
+import { todoCategories } from '../../domain/Enums';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class TodoPage extends Component{
 
-constructor(props){
-super(props);
+    constructor(props){
+        super(props);
         this.state = {
-        isLoading: true,
-                todoLists: null
+            isLoading: true,
+            todoLists: null
         };
         this.categories = todoCategories;
+    
         this.componentDidMount = this.componentDidMount.bind(this);
         this.postTodo = this.postTodo.bind(this);
-}
-
-async componentDidMount() {
-const todoLists = this.categories.map(category => (
-        <TodoCategory
-    category = { category }>
-</TodoCategory>
-        ));
-        if (todoLists){
-this.setState({ todoLists: todoLists, isLoading: false });
-}
-}
-
-
-async postTodo(){
-let todo = emptyTodo;
+      }
+    
+      async componentDidMount() {
+        const todoLists = this.categories.map(category => (
+            <TodoCategory
+                category = { category }>
+            </TodoCategory>
+          ));
+    
+        if(todoLists){
+          this.setState({ todoLists: todoLists, isLoading: false });
+        }
+      }
+    
+    
+      async postTodo(){
+        let todo = emptyTodo;
         todo.todoText = document.getElementById("toDoTextInput").value;
         todo.checked = false;
         todo.important = document.getElementById("important").value;
         todo.category = document.getElementById("categories").value;
+    
         await post(`http://localhost:8080/todo`, todo)
         .then(() => {
-        this.componentDidMount();
+          this.componentDidMount();
         });
-}
+      }
+    
 
-render() {
-
-const {todoLists, isLoading} = this.state;
+      render() {
+    
+        const {todoLists, isLoading} = this.state;
+    
         if (isLoading) {
-return <p>Loading...</p>;
-}
-
-return(
-        <>
+          return <p>Loading...</p>;
+        }
+        
+        return(
+            <>
                     <div>
                         <div className="background-3">
                             <div className="title">
@@ -81,7 +82,7 @@ return(
                                         </select>
                                     </div>
                                     <div className="submit">
-                                        <button className="submitbut" type="submit" onClick={() => this.postTodo()}>Save</button>
+                                        <button className="submitbut" onClick={() => this.postTodo()}>Save</button>
                                     </div>
                                 </form>
                             </div>

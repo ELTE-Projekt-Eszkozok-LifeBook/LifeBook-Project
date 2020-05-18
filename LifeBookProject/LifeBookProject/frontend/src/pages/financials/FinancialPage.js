@@ -1,74 +1,76 @@
-import React, { Component }
-from 'react';
+import React, { Component } from 'react';
 import FinancialCategory from './FinancialCategory';
-import {emptyFinancial}
-from '../../domain/EmptyElems';
-import {financialCategories}
-from '../../domain/Enums';
-import {get, modify, post, remove}
-from '../../utilities/HTTPRequests';
+import {emptyFinancial} from '../../domain/EmptyElems';
+import {financialCategories} from '../../domain/Enums';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 import './Financial.css';
 
 class FinancialPage extends Component{
 
-emptyItem = {
-amount: '',
-        date: '',
-        description: '',
-        category: ''
-        };
-        constructor(props){
-super(props);
+    constructor(props){
+        super(props);
         this.state = {
-        isLoading: true,
-                financialLists: null,
-                costs: 0
+            isLoading: true,
+            financialLists: null,
+            costs: 0
         };
         this.categories = financialCategories;
         this.componentDidMount = this.componentDidMount.bind(this);
         this.postData = this.postData.bind(this);
-        }
+    }
 
-async componentDidMount() {
-const response = await get('http://localhost:8080/financial/costs');
-        const body = await response.json();
+    async componentDidMount() {
+        const response = await get('http://localhost:8080/financial/costs');
+        const body = await response.text();
         console.log(body);
-        if (body){
-this.setState({ costs: body, isLoading: false });
-        const financialLists = this.categories.map(category => (
-                <FinancialCategory
-    category = { category }
-    costs = {this.costs}>
-</FinancialCategory>
-
-                ));
-        if (financialLists){
-this.setState({ financialLists: financialLists, isLoading: false });
+    
+        if(response){
+          this.setState({isLoading: false});
         }
-}
-}
+        if(body){
+          this.setState({ costs: body});
+    
+          const financialLists = this.categories.map(category => (
+            <FinancialCategory
+                category = { category }
+                costs = {this.state.costs}>
+            </FinancialCategory>
+    
+          ));
+      
+          if(financialLists){
+            this.setState({ financialLists: financialLists});
+          }
+        }
+      }
 
-async postData(){
-let d = new Date();
+      async postData(){
+        let d = new Date();
         let data = emptyFinancial;
         data.amount = document.getElementById("amountInput").value;
-        data.date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+        if(d.getMonth()+1 / 10  < 10){
+          data.date = d.getFullYear() + "-0" + (d.getMonth()+1) + "-" + d.getDate() ;
+        } else {
+          data.date = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() ;
+        }
         data.description = document.getElementById("descriptionInput").value;
         data.category = document.getElementById("categoriesInput").value;
+    
         await post(`http://localhost:8080/financial`, data).then(() => {
-this.componentDidMount();
+          this.componentDidMount();
         });
-        }
+      }
 
 
-render() {
-const {financialLists, isLoading} = this.state;
+      render() {
+        const {financialLists, isLoading} = this.state;
+    
         if (isLoading) {
-return <p>Loading...</p>;
+          return <p>Loading...</p>;
         }
-
-return(
-        <>
+    
+        return(
+            <>
                 <div className="background-6">
                     <div className="title">
                         <span> Never spend your money before you have earned it.</span>
@@ -104,8 +106,8 @@ return(
 
                 <div className="financials"> { financialLists } </div>
                 </>
-                );
-}
+            );
+        }
 
 }
 

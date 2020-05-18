@@ -10,7 +10,7 @@ class FinancialCategory extends Component{
     this.state = {
       isLoading: true,
       financials: [],
-      categoryCost: 0
+      categoryCost: "0",
     };
     this.remove = this.remove.bind(this);
   }
@@ -23,11 +23,19 @@ class FinancialCategory extends Component{
     const body = await response.json();
 
     const response2 = await get('http://localhost:8080/financial/costs/' + category.toUpperCase());
-    //const categoryCost = await response2.json();
-    //console.log(categoryCost);
+    const categoryCost = await response2.text();
+    console.log("cost: "+this.props.costs);
+    console.log(this.props.category+" cost: "+categoryCost);
 
     if(body){
-      this.setState({ financials: body, isLoading: false , categoryCost: response2});
+      this.setState({ financials: body});
+    }
+    if(categoryCost){
+      this.setState({categoryCost: categoryCost});
+      console.log(this.state.categoryCost);
+    }
+    if(this.state.financials && this.state.categoryCost){
+      this.setState({isLoading: false});
     }
   }
 
@@ -46,7 +54,6 @@ class FinancialCategory extends Component{
       return <p>Loading...</p>;
     }
 
-    console.log(financials);
     const financialList = financials.map(financial => (
       <FinancialElement
           stat = { financial }
@@ -55,21 +62,32 @@ class FinancialCategory extends Component{
     ))
 
     return(
-        <div>{(financialList.length !== 0) ? (
+      <div>{(financialList.length !== 0) ? (
+
         <div className="allFinancial">
+
           <div className="elementFinancial">
-          <h3 className="financialName">{this.props.category}</h3>
-          <div className="infos"> { financialList } </div>
-        </div>
-        
-          <div className="percent" id="stats">
-            <p>Category costs:</p>
-            <p>{this.categoryCost}</p>
-            <p>{this.categoryCost / this.props.costs} %</p>
+            <h3 className="financialName">{this.props.category}</h3>
+            <div className="infos"> { financialList } </div>
           </div>
           
+          <div className="percent" id="stats">
+            <p>Sum:</p>
+            <p>{this.state.categoryCost}</p>
+
+            {(this.props.category != 'INCOME') ? (
+              <>
+              <p>Category percentage:</p>
+              <p>{Math.round(this.state.categoryCost / this.props.costs * 10000)/100} %</p>
+              </>
+            ) : null}
+          </div>
+
         </div>
-        ) : null}</div>
+
+        ) : null}
+        
+      </div>
     );
 
   }

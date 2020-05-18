@@ -34,7 +34,6 @@ class DiaryElement extends Component{
     }
 
     async modifyDiary(id){
-        let d = new Date();
         let diary = emptyDiary;
         diary.text = this.state.textValue;
         diary.image = this.state.imgValue;

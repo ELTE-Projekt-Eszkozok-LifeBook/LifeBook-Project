@@ -98,7 +98,7 @@ class Diary extends Component{
                             <input type='text' id='moodInput' name='mood' placeholder="How are you feeling?"></input><br></br>
                             <input type='text' id='imgInput' name='image' placeholder="Add picture by url"></input><br></br>
                             <input type='text' id='videoInput' name='video' placeholder="Add video by url"></input><br></br>
-                            <button className="diaryBut" type="submit" onClick={() => this.postDiary()}>Save</button>
+                            <button className="diaryBut" onClick={() => this.postDiary()}>Save</button>
                             
                         </form>
                         </div>
