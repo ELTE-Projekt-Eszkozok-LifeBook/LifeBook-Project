@@ -18,16 +18,13 @@ after_success:
 - ls
 - bash push-javadoc-to-gh-pages.sh
 - cd LifeBookProject/LifeBookProject
-deploy:
-  provider: heroku
-  api_key:
-    secure: YNa6NE5ctZuHfToqyueFBER4AZCcarAnADVGdjBbxyD0vx1C7LjEa9WRTUrCXnWznlX9PzYOU6oXb3o/0B1qsWGDJ21gDm22dtTbd9Dwku3B0FLbdXuE3nMaHf8UNqhcPxK0yo8m9K7r5atooMG1nGSONi6GRDzsiOsigEvDs/Kr3T4pEEcHa9FG6nzsEcoAvjv3MGDkPGFJrGIw/N72+NmIZmvIa4t/ES3RTHrL5XSNgzFF40t9Act5Vz+IBbu/6e/8wiIHiokbiJN+Yg4GZ2UnCaXTqhGT1vsFGi64nIJTidUcvmndZbFfpqRSUwDKh6IMlXcJF/g9CMMm8mVY4JXclCrYWM/aYZtvvvsG/P1+svUxPFkgxABlSAxk0VNwOBP5y8+NdaueA3p1KFkjb4APEurTnQwBIUzd4tBDTTRj+5KPyWGZcwa/sb9uSXQfx4a5cW4ocJnhHDSToKTr7dPD9RYalW5Ie50I9UOw5NHnCuuk6uov9/4B3UegZ8VkJFdMzmcOs9iFCNGE+Z6iEV6jiYFeio/FqQbCZbc120NbNY8olmur84AysMeWBMPJZ6x7tHouUp3Y8P7VYOTMTE/UFZb0THEeyC/4GskCCZfwNGm8fjNzCt0gCQfkk5pc33CMzP3w1ws+SQIGyCO/oL3751HLcdA2if5c4gOZkck=
-  app: lifebookproject
-  on:
-    repo: ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project
-branches:
-  only:
-  - master
 cache:
   directories:
   - "$HOME/.m2"
+deploy:
+  provider: heroku
+  api_key:
+    secure: Cc7GnG++fSDwKUGue73GOy8qMxIMMcAzPHYbl6dAaaLoo+yc1yEbEGwXWn5VG9hCSoCZZxaIdymuCAPvJ8LpLg82d/nm1mK6HKV9qxBrX1XECBNK9re4tXwg6+82RMvM6OqCWO+D83hdK0Cji4LDQf9XJ59lPLRFZFnAjS4PmWts+odSD4DRHEfk/LJC3Cm6yExLh0y1qbH+ZILnakGU/1Q4/zv8wcd29Okk/3v3ReQrVDJH1HyNnWtvqANbrOePGISoBfbCjTkmQzMTW2lRbynM/k51Xay3Tn8xgbHamKf/gLY8yzW2bft3RV19KTtyoCGrzxCSFB3DL1tVzAt21RSc1rAJ9X3Xb1u0jWtOB5/moGEVQb7tLy6IwGRK8VPTbup8KUHZ02KDlIWNsDfCrev48vv2okaFCdRbZU9vNHthXpzpXWaeX5y0cdWUdVB4Nmg24rQoq5cY0FuLV+Kjb2hDeC6rFfxtjkR50Rnrji9+C0D6gmWtQjxUolI+vYTlPkCGLs7k1pCgtkuecp/DKMMQhGDC1N3NQ9SJwfbhlvVjW3QeBohuEUqQ2jpnvCUEgf9t75JjDaEBMsLZRsqjZKp/TMIGSbR9XgTnWGoT3W6ClgWQxiBccAIHKN05MieY8ueOqweVy5gFUtq8xT8/w6p3Ha1rGIn8J4TXEx44FYI=
+  app: lifebookproject
+  on:
+    repo: ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project
