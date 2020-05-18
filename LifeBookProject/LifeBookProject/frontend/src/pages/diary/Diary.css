@@ -1,0 +1,156 @@
+@import 'https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap';
+
+body, html{
+	font-family: 'Roboto', sans-serif;
+    height: 100%;
+	font-size: 18px;
+	color: #474747;
+}
+
+/*mobilon �ltal�nos g�rget�s marad, nem a fix�lt h�tt�rk�p*/
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+.background-1, .background-2{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    position: relative;
+}
+
+.background-1{
+    background-image: url(./diary.jpg);
+    height: 700px;
+}
+
+.background-2{
+    background-image: url(./books.jpg);
+    height:500px;
+}
+
+.title{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: black;
+	opacity: 0.8;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.title span{
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 20px;
+}
+
+.text{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+	opacity: 0.8;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.text span{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 18px;
+    font-size: 35px;
+    font-style: bold;
+}
+
+
+.upload{
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px 50px;
+}
+
+.search{
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 50px;
+}
+
+input#dateInput{
+    width: 400px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 15px;
+    transition: width 0.4s ease-in-out;
+}
+
+input#dateInput:focus{
+    width: 100%;
+}
+
+.diaryBut{
+    width: 100%;
+    font-size: 18px;
+    margin: 10px;
+}
+
+button{
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #cccccc;
+    color: #000000;
+}
+
+form{
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+
+textarea#textInput{
+    width: 100%;
+    height: 260px;
+    resize: none;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 10px;
+}
+
+input#moodInput, input#imgInput, input#videoInput{
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 10px;
+}
+
+div#showHide{
+    background-color: #000000;
+}

@@ -1,0 +1,176 @@
+@import 'https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap';
+
+body, html{
+	font-family: 'Roboto', sans-serif;
+    height: 100%;
+	font-size: 18px;
+	 color: #474747;
+}
+
+/*mobilon általános görgetés marad, nem a fixált háttérkép*/
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+.background-3, .todolistbackground{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    position: relative;
+}
+
+.background-3{
+    background-image: url('./todo.jpg');
+    height: 700px;
+}
+
+.todolistbackground{
+    background-image: url('./tasks.png');
+    height:500px;
+}
+
+.title{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: black;
+	opacity: 0.8;
+	font-family: 'Quicksand', sans-serif;
+}
+
+
+textarea#toDoTextInput{
+    width: 98%;
+    height: 80px;
+    resize: none;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 15px;
+    float: right;
+}
+
+input[type=text] {
+	width: 98%;
+	font-size: 18px;
+	margin: 8px 8px;
+	box-sizing: border-box;
+	padding: 12px 20px;
+}
+
+/*custom select*/
+.select-css {
+	display: left;
+	color: #474747;
+	line-height: 1.3;
+	padding: 3px 8px 3px 8px;
+	width: 75%;
+	max-width: 75%;
+	box-sizing: border-box;
+	margin: 10px;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #ccc;
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+	font-size: 18px;
+}
+.select-css::-ms-expand {
+	display: none;
+}
+
+.select-css:focus {
+	background-color: #ccc;
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #474747;
+	outline: none;
+}
+.select-css option {
+	font-weight:normal;
+}
+
+
+
+
+
+/*custom checkbox*/
+.container {
+  display: left;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  display: left;
+  position: absolute;
+  top: 16px;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+  background-color: #ccc;
+}
+.container:hover input ~ .checkmark {
+  background-color: #ff6347;
+}
+.container input:checked ~ .checkmark {
+  background-color: #ff6347;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.right-side{
+    text-align: right;
+}
+
+.submitbut {
+	width: 100%
+}
+
+.todolist{
+    background-color: #000000;
+}

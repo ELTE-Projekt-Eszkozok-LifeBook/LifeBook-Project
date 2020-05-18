@@ -1,0 +1,129 @@
+@import 'https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap';
+
+body, html{
+	font-family: 'Roboto', sans-serif;
+    height: 100%;
+	font-size: 18px;
+	color: #474747;
+}
+
+/*mobilon általános görgetés marad, nem a fixált háttérkép*/
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+.background-timetable1, .background-timetable2{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    position: relative;
+}
+
+.background-timetable1{
+    background-image: url(https://agsa-ikoe.de/fileadmin/user_upload/Fotolia_66102721_Subscription_Website.jpg);
+    height: 700px;
+}
+
+.background-timetable2{
+    background-image: url(https://weareesd113.org/wp-content/uploads/2019/09/agenda-e1568128520269.jpg);
+    height:500px;
+}
+
+.title-timetable{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: black;
+	opacity: 0.8;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.title-timetable span{
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 20px;
+}
+
+.text-timetable{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+	opacity: 0.8;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.text-timetable span{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 18px;
+    font-size: 35px;
+    font-style: bold;
+}
+
+
+.upload-timetable{
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px 50px;
+}
+
+.events{
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 50px;
+}
+
+button{
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+}
+
+button:hover{
+    background-color: #cccccc;
+    color: #000000;
+}
+
+form#timetable{
+    margin-bottom: 15px;
+}
+
+
+textarea#noteInput{
+    width: 45%;
+    height: 300px;
+    resize: none;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 15px;
+}
+
+input .timetableEvent, .timetableDate, .timetableTime, .timetableFrequency{
+    width: 45%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 20px;
+    margin: 15px;
+}
+
