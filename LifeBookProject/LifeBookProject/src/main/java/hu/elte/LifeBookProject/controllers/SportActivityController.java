@@ -63,7 +63,7 @@ public class SportActivityController {
     //új sportolási tevékenységek felvitele
     @PostMapping("")
     public ResponseEntity<SportActivity> post(@RequestBody SportActivity sportActivity) {
-        if (sportActivityRepo.getByName(sportActivity.getName()).equals(null)) {
+        if (sportActivityRepo.getByName(sportActivity.getName()) == null) {
             return ResponseEntity.ok(sportActivityRepo.save(sportActivity));
         }
         return ResponseEntity.ok().build();
