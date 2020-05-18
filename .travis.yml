@@ -26,7 +26,7 @@ deploy:
   provider: heroku
   api_key:
     secure: PYZGvnkGLQEOfbCDa+kXRct3epcWQi8bk55te9A3fEa2nfak+K1FS0gAcxUEdM4o9JarFUZ+sFgXzkFFT7f0P4QTnQX0hn35olbf2O75GifQjXzEhHnhMqFWqcqwlfgSnh//FTZdVnozeCIjHsAYmNBbnYXcfby86tVLUjXE/JkXnsbj+txxS8h/CoDu3NFXaaiWdc149B+GP+HoIHWshXrDB7bCyO6bJUDsUCXBtR316j/n43UTf5jEy6+9rFx4daMyuidS+LH5CmaItupJLMtPfW6odHvxzdObvWKyEGoSmDVzAB6Vh6zDq3oI3FEfXYBHy+301gh9WqjGtvuVMS0agdbvYqMsvY975REz9NzaHYWz8hShAHj0LdcXXsB2G72F1zNLlN+GCE1ywD2nLv8lxp9lxTYWUROUHDIxH2OlFfP6ZLy9MlT7s8ZRBh1nMRL8RUdM7lW9hWw1aXLZJ4oIua8ymBEpQXCVDGGsAicuHC3kgLBzeHHFm3Y3fAHiRvTtDcI+ulTaPA0dAZ56FzXSkz6Qg4zajqNjZAj+uTLlQ7Nogp+dD7LTBMm8ttxIcOfcK80MXbVaca75Eht/84NyURVZNESDgWajs/dRaUEbkySzswicCxhPF1mNn9YlhQtmCYYVbdaaMMyZf1toJAM1xPWI29yd0gnXEoD3XMg=
-  app: lifebook-project
+  app: LifeBook-Project
   on:
     repo: ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project
 
