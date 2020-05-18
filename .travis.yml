@@ -3,7 +3,6 @@ jdk: oraclejdk15
 os: linux
 env:
   global:
-  - secure: BxmJN35YMrLYaJCQj86Sq5emDIV5G1F1tn/Ec1XVrwWLNXzXt3a/eFAFwFsalNEC1f1vj2ut3xpXUUgDguwmXBXDAvlR5C6ZGMRk84DeO9HaCKoVdrmaqFNB+YfFLiTTU4V7UXsEWjEOZbSy7K06pLJ3AcRPtPgh2tmay66HKQUwHgTH/JK7vQ45lwt2hdOrpXYM7S6cmHOwFk8KBLHnDSpbtmkvLzAxhoXjf0iQlR3wCWyMHwroVAy7gK6DScqJzbCKGH1X2kEmwTHw2BDQKJoVDB1e+zsBij3PIHXDlgre41WUT6PYosfMftt4ivVSuGpWq/LW2dc6bIXpxt5r5OtnRb+8vusnzFVac0GkEjOZSJD7MUhGdRrHdHT4VGpMtlLIdviryeLMF1pKWU8Zc76VZYfrL0ik1JbWV4tb41kLZeNOj2bp3EPUeJ5J3g4iHchsGPKCXjn7C16qp8nJKKuFvm8yRyW1W4hEv6k6DcwJ8ajdnZavjSeIhIgW2vhX2svkKj3rVzKZ6lHbdbAgAht4qS71i8HpAzfzwbVyJP+e7yyhF8wsdW9T7AoROcxl2Iv2Ekowlc+t9oOH7uu7ir3IWPrKWvjTjqdwSpmktg2VHw4lTS6dMh/L6kT7/a1DhpYZKnWQst/n72D34rGH/MbdlV6bDCzKlK3uAMjcbmM=
 script:
 - cd LifeBookProject/LifeBookProject
 - echo "Maven dependencies"
@@ -12,12 +11,7 @@ script:
 - mvn test
 after_success:
 - mvn checkstyle:check
-- mvn javadoc:javadoc
-- cd ..
-- cd ..
-- ls
-- bash push-javadoc-to-gh-pages.sh
-- cd LifeBookProject/LifeBookProject
+
 cache:
   directories:
   - "$HOME/.m2"
