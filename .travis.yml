@@ -25,10 +25,8 @@ after_success:
 deploy:
     provider: heroku
     api-key:
-        secure: HEROKU_API_KEY
+        secure: 24db5c27-2cb5-49f5-ac36-67035f8c38fc
     app: lifebook-project
-    on:
-        branch: master
 
 branches:
     only:
