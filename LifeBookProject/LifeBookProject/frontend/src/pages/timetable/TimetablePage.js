@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import TimetableElement from './TimetableElement';
 import './Timetable.css'
-import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
+import {db} from '../../domain/Enums';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class TimetablePage extends Component {
 

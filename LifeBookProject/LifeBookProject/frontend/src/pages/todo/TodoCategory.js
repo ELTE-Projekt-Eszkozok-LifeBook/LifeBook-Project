@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TodoElement from './TodoElement';
-import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import {db} from '../../domain/Enums';
 import './TodoCategory.css'
 
 class TodoCategory extends Component{

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
+import {db} from '../../domain/Enums';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class TodoElement extends Component{
 

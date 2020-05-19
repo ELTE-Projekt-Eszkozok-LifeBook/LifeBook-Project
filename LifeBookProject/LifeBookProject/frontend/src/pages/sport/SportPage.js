@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import SportElement from './SportElement';
-import {emptySport} from '../../domain/EmptyElems'
+import {emptySport, db} from '../../domain/EmptyElems'
 import './Sport.css';
-import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 import { sportRegularity } from '../../domain/Enums';
 
 

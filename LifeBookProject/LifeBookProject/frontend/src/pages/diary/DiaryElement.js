@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {emptyDiary} from '../../domain/EmptyElems';
-import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
+import {emptyDiary, db} from '../../domain/EmptyElems';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 import './DiaryElement.css';
 
 class DiaryElement extends Component{

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import EatingHabitElement from './EatingHabitElement';
-import {emptyEatingHabit} from '../../domain/EmptyElems';
+import {emptyEatingHabit, db} from '../../domain/EmptyElems';
 import {eatingFrequency} from '../../domain/Enums';
 import './EatingHabit.css';
-import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class EatingHabitPage extends Component{
 

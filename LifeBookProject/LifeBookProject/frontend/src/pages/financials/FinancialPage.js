@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import FinancialCategory from './FinancialCategory';
-import {emptyFinancial} from '../../domain/EmptyElems';
+import {emptyFinancial, db} from '../../domain/EmptyElems';
 import {financialCategories} from '../../domain/Enums';
-import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 import './Financial.css';
 
 class FinancialPage extends Component{

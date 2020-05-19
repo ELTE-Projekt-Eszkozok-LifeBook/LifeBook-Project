@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import TodoCategory from './TodoCategory';
 import './Todo.css';
-import { emptyTodo } from '../../domain/EmptyElems';
+import { emptyTodo, db } from '../../domain/EmptyElems';
 import { todoCategories } from '../../domain/Enums';
-import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 
 class TodoPage extends Component{
 
