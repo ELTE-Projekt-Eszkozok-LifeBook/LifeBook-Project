@@ -6,7 +6,7 @@
 .elementFinancial{
     background-color: #000000;
     padding: 20px 50px;
-    background-image: url('./money.jpg');
+    background-image: url('./coins.jpg');
     text-align: left;
     opacity: 0.9;
     color: #ffffff;
@@ -19,4 +19,6 @@
 .percent{
     color: #ffffff;
     margin-bottom: 15px;
+	text-align: center;
 }
+

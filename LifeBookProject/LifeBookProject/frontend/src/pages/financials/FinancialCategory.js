@@ -69,7 +69,7 @@ class FinancialCategory extends Component{
 
           <div className="elementFinancial">
             <h3 className="financialName">{this.props.category}</h3>
-            <div className="infos"> { financialList } </div>
+            <div> { financialList } </div>
           </div>
           
           <div className="percent" id="stats">

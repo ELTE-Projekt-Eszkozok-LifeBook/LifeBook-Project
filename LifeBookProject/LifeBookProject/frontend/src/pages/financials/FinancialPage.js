@@ -90,7 +90,7 @@ class FinancialPage extends Component{
                             <label htmlFor="categories">Category:</label>
                             <select className="select-css-money" id="categoriesInput" name="categories">
                                 {this.categories.map((value, index) => {
-                        return <option value={value} key={"category" + index}>{value.toLowerCase()}</option>
+                        return <option value={value} key={"category" + index}>{value.toUpperCase()}</option>
                         })}
                             </select>
                         </div>
