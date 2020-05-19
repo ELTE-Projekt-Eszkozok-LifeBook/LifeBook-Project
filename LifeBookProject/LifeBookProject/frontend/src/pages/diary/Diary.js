@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DiaryElement from './DiaryElement';
-import {emptyDiary, db} from '../../domain/EmptyElems';
+import {db} from '../../domain/Enums';
+import {emptyDiary} from '../../domain/EmptyElems';
 import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 import './Diary.css';
 

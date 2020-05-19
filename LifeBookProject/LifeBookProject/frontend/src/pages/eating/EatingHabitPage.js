@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EatingHabitElement from './EatingHabitElement';
-import {emptyEatingHabit, db} from '../../domain/EmptyElems';
-import {eatingFrequency} from '../../domain/Enums';
+import {emptyEatingHabit} from '../../domain/EmptyElems';
+import {eatingFrequency, db} from '../../domain/Enums';
 import './EatingHabit.css';
 import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 

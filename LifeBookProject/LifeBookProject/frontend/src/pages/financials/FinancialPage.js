@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FinancialCategory from './FinancialCategory';
-import {emptyFinancial, db} from '../../domain/EmptyElems';
-import {financialCategories} from '../../domain/Enums';
+import {emptyFinancial} from '../../domain/EmptyElems';
+import {financialCategories, db} from '../../domain/Enums';
 import {get, modify, post, remove} from '../../utilities/HTTPRequests';
 import './Financial.css';
 
