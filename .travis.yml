@@ -3,6 +3,25 @@ jdk: oraclejdk15
 os: linux
 env:
   global:
+  - secure: BxmJN35YMrLYaJCQj86Sq5emDIV5G1F1tn/Ec1XVrwWLNXzXt3a/eFAFwFsalNEC1f1vj2ut3xpXUUgDguwmXBXDAvlR5C6ZGMRk84DeO9HaCKoVdrmaqFNB+YfFLiTTU4V7UXsEWjEOZbSy7K06pLJ3AcRPtPgh2tmay66HKQUwHgTH/JK7vQ45lwt2hdOrpXYM7S6cmHOwFk8KBLHnDSpbtmkvLzAxhoXjf0iQlR3wCWyMHwroVAy7gK6DScqJzbCKGH1X2kEmwTHw2BDQKJoVDB1e+zsBij3PIHXDlgre41WUT6PYosfMftt4ivVSuGpWq/LW2dc6bIXpxt5r5OtnRb+8vusnzFVac0GkEjOZSJD7MUhGdRrHdHT4VGpMtlLIdviryeLMF1pKWU8Zc76VZYfrL0ik1JbWV4tb41kLZeNOj2bp3EPUeJ5J3g4iHchsGPKCXjn7C16qp8nJKKuFvm8yRyW1W4hEv6k6DcwJ8ajdnZavjSeIhIgW2vhX2svkKj3rVzKZ6lHbdbAgAht4qS71i8HpAzfzwbVyJP+e7yyhF8wsdW9T7AoROcxl2Iv2Ekowlc+t9oOH7uu7ir3IWPrKWvjTjqdwSpmktg2VHw4lTS6dMh/L6kT7/a1DhpYZKnWQst/n72D34rGH/MbdlV6bDCzKlK3uAMjcbmM=
+script:
+- cd LifeBookProject/LifeBookProject
+- echo "Maven dependencies"
+@@ -12,12 +11,7 @@ script:
+- mvn test
+after_success:
+- mvn checkstyle:check
+- mvn javadoc:javadoc
+- cd ..
+- cd ..
+- ls
+- bash push-javadoc-to-gh-pages.sh
+- cd LifeBookProject/LifeBookProject
+
+cache:
+  directories:
+  - "$HOME/.m2"
+
 script:
 - cd LifeBookProject/LifeBookProject
 - echo "Maven dependencies"
@@ -19,6 +38,5 @@ deploy:
   provider: heroku
   api_key:
     secure: Cc7GnG++fSDwKUGue73GOy8qMxIMMcAzPHYbl6dAaaLoo+yc1yEbEGwXWn5VG9hCSoCZZxaIdymuCAPvJ8LpLg82d/nm1mK6HKV9qxBrX1XECBNK9re4tXwg6+82RMvM6OqCWO+D83hdK0Cji4LDQf9XJ59lPLRFZFnAjS4PmWts+odSD4DRHEfk/LJC3Cm6yExLh0y1qbH+ZILnakGU/1Q4/zv8wcd29Okk/3v3ReQrVDJH1HyNnWtvqANbrOePGISoBfbCjTkmQzMTW2lRbynM/k51Xay3Tn8xgbHamKf/gLY8yzW2bft3RV19KTtyoCGrzxCSFB3DL1tVzAt21RSc1rAJ9X3Xb1u0jWtOB5/moGEVQb7tLy6IwGRK8VPTbup8KUHZ02KDlIWNsDfCrev48vv2okaFCdRbZU9vNHthXpzpXWaeX5y0cdWUdVB4Nmg24rQoq5cY0FuLV+Kjb2hDeC6rFfxtjkR50Rnrji9+C0D6gmWtQjxUolI+vYTlPkCGLs7k1pCgtkuecp/DKMMQhGDC1N3NQ9SJwfbhlvVjW3QeBohuEUqQ2jpnvCUEgf9t75JjDaEBMsLZRsqjZKp/TMIGSbR9XgTnWGoT3W6ClgWQxiBccAIHKN05MieY8ueOqweVy5gFUtq8xT8/w6p3Ha1rGIn8J4TXEx44FYI=
-  app: lifebookproject
-  on:
-    repo: ELTE-Projekt-Eszkozok-LifeBook/LifeBook-Project
+  skip_cleanup: true
+  app: lifebookproject1
