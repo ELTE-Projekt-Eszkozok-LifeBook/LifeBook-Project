@@ -14,7 +14,7 @@
     "test": "cd LifeBookProject/LifeBookProject/frontend && react-scripts test",
     "eject": "cd LifeBookProject/LifeBookProject/frontend && react-scripts eject"
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "http://lifebook-project-backend.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
