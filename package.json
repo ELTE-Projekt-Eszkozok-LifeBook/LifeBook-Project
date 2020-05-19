@@ -9,8 +9,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "cd LifeBookProject/LifeBookProject && mvnw spring-boot:run && cd frontend && react-scripts start",
-    "build": "cd LifeBookProject/LifeBookProject && mvnw install && cd frontend && react-scripts build",
+    "start": "cd LifeBookProject/LifeBookProject/frontend && react-scripts start",
+    "build": "cd LifeBookProject/LifeBookProject/frontend && react-scripts build",
     "test": "cd LifeBookProject/LifeBookProject/frontend && react-scripts test",
     "eject": "cd LifeBookProject/LifeBookProject/frontend && react-scripts eject"
   },
