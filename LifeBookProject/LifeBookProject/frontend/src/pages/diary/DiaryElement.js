@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {emptyDiary} from '../../domain/EmptyElems';
-import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
 import './DiaryElement.css';
 
 class DiaryElement extends Component{
@@ -41,7 +41,7 @@ class DiaryElement extends Component{
         diary.currentMood = this.state.moodValue;
         diary.date = diary.date;
 
-        await modify(`http://localhost:8080/diary/update/` + this.props.diary.id, diary)
+        await modify(db + `/diary/update/` + this.props.diary.id, diary)
         .then(() => {
           diary.id = this.props.diary;
           this.props.diary = diary;

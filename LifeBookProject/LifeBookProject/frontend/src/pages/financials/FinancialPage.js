@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FinancialCategory from './FinancialCategory';
 import {emptyFinancial} from '../../domain/EmptyElems';
 import {financialCategories} from '../../domain/Enums';
-import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
 import './Financial.css';
 
 class FinancialPage extends Component{
@@ -20,7 +20,7 @@ class FinancialPage extends Component{
     }
 
     async componentDidMount() {
-        const response = await get('http://localhost:8080/financial/costs');
+        const response = await get(db + '/financial/costs');
         const body = await response.text();
         console.log(body);
     
@@ -56,7 +56,7 @@ class FinancialPage extends Component{
         data.description = document.getElementById("descriptionInput").value;
         data.category = document.getElementById("categoriesInput").value;
     
-        await post(`http://localhost:8080/financial`, data).then(() => {
+        await post(db + `/financial`, data).then(() => {
           this.componentDidMount();
         });
       }

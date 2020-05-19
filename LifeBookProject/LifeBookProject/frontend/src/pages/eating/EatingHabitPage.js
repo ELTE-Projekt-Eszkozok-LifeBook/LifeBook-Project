@@ -3,7 +3,7 @@ import EatingHabitElement from './EatingHabitElement';
 import {emptyEatingHabit} from '../../domain/EmptyElems';
 import {eatingFrequency} from '../../domain/Enums';
 import './EatingHabit.css';
-import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
 
 class EatingHabitPage extends Component{
 
@@ -20,7 +20,7 @@ class EatingHabitPage extends Component{
     }
 
     async componentDidMount() {
-        const response = await get('http://localhost:8080/eatinghabits');
+        const response = await get(db + '/eatinghabits');
         const body = await response.json();
         if(body){
           this.setState({ eatingHabits: body, isLoading: false });
@@ -34,14 +34,14 @@ class EatingHabitPage extends Component{
         eatingHabit.isFood = document.getElementById("isFood").value;
         eatingHabit.frequency = document.getElementById("frequencyInput").value;
         eatingHabit.portion = document.getElementById("portionInput").value;
-        await post(`http://localhost:8080/eatinghabits`, eatingHabit)
+        await post(db + `/eatinghabits`, eatingHabit)
         .then(() => {
             this.componentDidMount();
         });
     }
 
     async remove(name) {
-        await remove(`http://localhost:8080/eatinghabits/delete/${name}`)
+        await remove(db + `/eatinghabits/delete/${name}`)
         .then(() => {
         let updatedEatingHabits = [...this.state.eatingHabits].filter(i => i.name !== name);
                 this.setState({eatingHabits: updatedEatingHabits});
@@ -52,7 +52,7 @@ class EatingHabitPage extends Component{
     async searchEatingHabit(){
         const type = document.getElementById('searchInput').value;
         if (type){
-            const response = await get('http://localhost:8080/eatinghabits/type/' + type);
+            const response = await get(db + '/eatinghabits/type/' + type);
             const body = await response.json();
             if (body){
                 this.setState({ eatingHabits: body, isLoading: false });
@@ -61,7 +61,7 @@ class EatingHabitPage extends Component{
     }
 
 async listEatingHabits(){
-    const response = await get('http://localhost:8080/eatinghabits');
+    const response = await get(db + '/eatinghabits');
     const body = await response.json();
     if (body){
         this.setState({ eatingHabits: body, isLoading: false });

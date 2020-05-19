@@ -1,4 +1,6 @@
 
+  export const db = "https://lifebook-project-backend.herokuapp.com/";
+
   export const financialCategories = [    
         "HOUSEHOLD",
         "FOOD",

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DiaryElement from './DiaryElement';
 import {emptyDiary} from '../../domain/EmptyElems';
-import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
 import './Diary.css';
 
 class Diary extends Component{
@@ -34,13 +34,13 @@ class Diary extends Component{
       diary.date = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() ;
     }
 
-    await post('http://localhost:8080/diary', diary)
+    await post(db +'/diary', diary)
   }
 
   async searchDiary(){
     var date = document.getElementById("dateInput").value;
     if(date){
-      const response = await get('http://localhost:8080/diary/date/' + date);
+      const response = await get(db +'/diary/date/' + date);
       const body = await response.json();
       if(body){
         this.setState({ diaries: body, isLoading: false });
@@ -54,7 +54,7 @@ class Diary extends Component{
     if(form.display == "block"){
         form.display = "none";
     } else {
-        const response = await get('http://localhost:8080/diary');
+        const response = await get(db + '/diary');
         const body = await response.json();
         if(body){
           this.setState({ diaries: body, isLoading: false });

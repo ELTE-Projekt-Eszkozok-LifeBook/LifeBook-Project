@@ -3,7 +3,7 @@ import TodoCategory from './TodoCategory';
 import './Todo.css';
 import { emptyTodo } from '../../domain/EmptyElems';
 import { todoCategories } from '../../domain/Enums';
-import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
 
 class TodoPage extends Component{
 
@@ -39,7 +39,7 @@ class TodoPage extends Component{
         todo.important = document.getElementById("important").value;
         todo.category = document.getElementById("categories").value;
     
-        await post(`http://localhost:8080/todo`, todo)
+        await post(db + `/todo`, todo)
         .then(() => {
           this.componentDidMount();
         });

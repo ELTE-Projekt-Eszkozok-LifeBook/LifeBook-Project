@@ -13,21 +13,5 @@
     "build": "cd LifeBookProject/LifeBookProject/frontend && react-scripts build",
     "test": "cd LifeBookProject/LifeBookProject/frontend && react-scripts test",
     "eject": "cd LifeBookProject/LifeBookProject/frontend && react-scripts eject"
-  },
-  "proxy": "https://lifebook-project-backend.herokuapp.com/",
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

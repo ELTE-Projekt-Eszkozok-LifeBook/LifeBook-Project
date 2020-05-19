@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TimetableElement from './TimetableElement';
 import './Timetable.css'
+import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
 
 class TimetablePage extends Component {
 
@@ -22,7 +23,7 @@ class TimetablePage extends Component {
     }
 
     async componentDidMount() {
-        const response = await fetch('http://localhost:8080/timetable');
+        const response = await fetch(db + '/timetable');
         const body = await response.json();
         if(body){
             this.setState({ events: body, isLoading: false});
@@ -38,7 +39,7 @@ class TimetablePage extends Component {
         event.time = d.toTimeString();
         event.note = document.getElementById("noteInput").value;
         
-        await fetch('http://localhost:8080/timetable', {
+        await fetch(db + '/timetable', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
 
 class TodoElement extends Component{
 
@@ -17,7 +17,7 @@ class TodoElement extends Component{
         });
         let todo = this.props.todo;
         todo.checked = this.state.checked;
-        modify('http://localhost:8080/todo/update/' + this.props.todo.id, todo);  
+        modify(db + '/todo/update/' + this.props.todo.id, todo);  
     }
 
     render() {

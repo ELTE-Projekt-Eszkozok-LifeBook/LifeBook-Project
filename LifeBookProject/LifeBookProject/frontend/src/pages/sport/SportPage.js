@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SportElement from './SportElement';
 import {emptySport} from '../../domain/EmptyElems'
 import './Sport.css';
-import {get, modify, post, remove} from '../../utilities/HTTPRequests';
+import {get, modify, post, remove, db} from '../../utilities/HTTPRequests';
 import { sportRegularity } from '../../domain/Enums';
 
 
@@ -21,7 +21,7 @@ class SportPage extends Component{
       }
     
       async componentDidMount() {
-        const response = await get('http://localhost:8080/sportactivity');
+        const response = await get(db + '/sportactivity');
         const body = await response.json();
         console.log(body);
         if(body){
@@ -37,14 +37,14 @@ class SportPage extends Component{
         sport.startTime = document.getElementById("startInput").value;
         sport.isOfficial = document.getElementById("isOfficial").value;
     
-        await post(`http://localhost:8080/sportactivity`, sport)
+        await post(db + `/sportactivity`, sport)
         .then(() => {
           this.componentDidMount();
         });
       }
     
       async remove(name) {
-        await remove(`http://localhost:8080/sportactivity/delete/${name}`)
+        await remove(db + `/sportactivity/delete/${name}`)
         .then(() => {
           let updatedSports = [...this.state.sports].filter(i => i.name !== name);
           this.setState({sports: updatedSports});
