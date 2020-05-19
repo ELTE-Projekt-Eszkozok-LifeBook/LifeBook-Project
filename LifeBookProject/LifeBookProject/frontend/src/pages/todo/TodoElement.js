@@ -13,6 +13,7 @@ class TodoElement extends Component{
     }
 
     handleChange(target) {
+        console.log(target.checked);
         this.setState({
           checked: target.checked
         });
@@ -29,7 +30,7 @@ class TodoElement extends Component{
                 <p>{todo.todoText}</p>
 
                 <div>
-                    <input type="checkbox" id="done" value={todo.checked} onChange={(e) => this.handleChange(e.target)}></input>
+                    <input type="checkbox" id="done" checked={this.state.checked} onChange={(e) => this.handleChange(e.target)}></input>
                     {(todo.important === true) ? (
                     <p>&#10082;</p>) : null}
                     <button onClick={() => this.props.onDeleteTodo(todo.id)}>&#10008;</button>
