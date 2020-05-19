@@ -1,0 +1,6 @@
+{
+  "root": "LifeBookProject/LifeBookProject/frontend/build/",
+  "routes": {
+    "/**": "index.html"
+  }
+}
