@@ -61,10 +61,16 @@ class EatingHabitPage extends Component{
     }
 
 async listEatingHabits(){
-    const response = await get(db + '/eatinghabits');
-    const body = await response.json();
-    if (body){
-        this.setState({ eatingHabits: body, isLoading: false });
+    const form = document.getElementById("showHide").style;
+    if(form.display == "block"){
+        form.display = "none";
+    } else {
+        const response = await get(db + '/eatinghabits');
+        const body = await response.json();
+        if (body){
+            this.setState({ eatingHabits: body, isLoading: false });
+        }
+        form.display = "block";
     }
   }
 
@@ -136,7 +142,7 @@ render() {
                         (eatingHabitList.length == 0) ? (
                             <p>There are no recorded foods.</p>
                         ) : (
-                            <div className="eatingHabitList"> { eatingHabitList } </div>)
+                            <div className="eatingHabitList" id={"showHide"}> { eatingHabitList } </div>)
                       ) : (
                         <p>Loading...</p>
                       )}

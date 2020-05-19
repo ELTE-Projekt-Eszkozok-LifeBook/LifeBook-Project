@@ -211,3 +211,7 @@ form#searchform {
 .eatingHabitList{
     background-color: #000000;
 }
+
+div#showHide{
+    display: none;
+}

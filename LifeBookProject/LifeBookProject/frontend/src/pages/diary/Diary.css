@@ -153,4 +153,5 @@ input#moodInput, input#imgInput, input#videoInput{
 
 div#showHide{
     background-color: #000000;
+    display: none;
 }
